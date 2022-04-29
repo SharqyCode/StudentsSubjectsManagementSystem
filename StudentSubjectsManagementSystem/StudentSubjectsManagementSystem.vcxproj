@@ -113,12 +113,14 @@
   <ItemGroup>
     <ClCompile Include="Database\DatabaseHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Student\Student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database\DatabaseHandler.h" />
+    <ClInclude Include="Student\Student.h" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="Database\sqlite3.obj" />

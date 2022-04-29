@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Database/DatabaseHandler.h"
-int main(int argc, char *argv[])
+
+int main()
 {
     std::cout << "Initializing DB\n";
     DatabaseHandler dbh;
