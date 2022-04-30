@@ -1,81 +1,95 @@
+// changed comments case
+// changed some valiables names
+// changed academic_year data type
+// added forward declaration for DatabaseHandler class
+// added dbh attribute
+// constructor overloading
+// added id setter
+// changed id to string
+// removed std namespace usage
 #include "Student.h"
 
-
-//Initializes memebers
-Student::Student(string my_name, string pass, int id, int acad_year)
+// initialization
+Student::Student(){}
+Student::Student(std::string id, std::string name, std::string password, std::string academic_year)
 {
-	name = my_name;
-	password = pass;
-	academic_year = acad_year;
+	this->name = name;
+	this->password = password;
+	this->academic_year = academic_year;
 	this->id = id;
 }
-//Checks the students credentials
-bool Student::login(string input_name, string input_pass)
+// login functionality
+bool Student::login(std::string input_name, std::string input_pass)
 {
 	if (name == input_name && password == input_pass)
 		return true;
 	else
 		return false;
 }
-//	Returns id
-int Student::get_id()
+// returns student id
+std::string Student::get_id()
 {
 	return id;
 }
-//Returns name
-string Student::get_name()
+// returns student name
+std::string Student::get_name()
 {
 	return name;
 }
-//Returns password
-string Student::get_password()
+// returns student password
+std::string Student::get_password()
 {
 	return password;
 }
-//Returns academic year
-int Student::get_academic_year()
+// returns student academic year
+std::string Student::get_academic_year()
 {
 	return academic_year;
 }
-//Retuns the list of finished courses
-vector<Course> Student::get_finished_courses()
+// retuns list of finished courses
+std::vector<Course> Student::get_finished_courses()
 {
 	return finished_courses;
 }
-//Renturns the list of courses currently in progress
-vector<Course> Student::get_courses_in_progress()
+// renturns list of courses in progress
+std::vector<Course> Student::get_courses_in_progress()
 {
 	return courses_in_progress;
 }
-//Edits name
-void Student::set_name(string new_name)
+// set id
+void Student::set_id(std::string id)
 {
-	name = new_name;
+	this->id = id;
 }
-//Edits password
-void Student::set_password(string new_pass)
+// set name
+void Student::set_name(std::string name)
 {
-	password = new_pass;
+	this->name = name;
 }
-//Edits academic year
-void Student::set_academic_year(int new_acad_year)
+// set password
+void Student::set_password(std::string password)
 {
-	academic_year = new_acad_year;
+	this->password = password;
 }
-//Registers in a course
+// set academic year
+void Student::set_academic_year(std::string academic_year)
+{
+	this->academic_year = academic_year;
+}
+// register new course
 bool Student::register_course(Course new_course)
 {
-	//make sure pre-requisite complete, not in finished.
-	cout << endl;
+	// make sure pre-requisite complete, not in finished.
+	std::cout << std::endl;
 	for (int i = 0; i < finished_courses.size(); i++)
 	{
 		if (new_course.get_code() == finished_courses[i].get_code())
 		{
-			cout << "Course already registered." << endl;
+			std::cout << "Course already registered." << std::endl;
 			return false;
 		}
 	}
-	vector<Course> required = new_course.get_pre_courses();
+	std::vector<Course> required = new_course.get_pre_courses();
 	for (int i = 0; i < required.size(); i++)
 	{
 		bool found = false;
@@ -89,13 +103,13 @@ bool Student::register_course(Course new_course)
 		}
 		if (!found) {
 
-			cout << "Pre-requisites not completed." << endl;
+			std::cout << "Pre-requisites not completed." << std::endl;
 			return false;
 		}
 
 	}
 	courses_in_progress.push_back(new_course);
-	cout << "Course added succsessfully" << endl;
+	std::cout << "Course added succsessfully" << std::endl;
 	return true;
 }
 
@@ -110,7 +124,7 @@ bool Student::add_finished_course(Course fin_course)
 		}
 	}
 	if (index == -1) {
-		cout << "*************Try again***********\n";
+		std::cout << "*************Try again***********\n";
 		return false;
 	}
 	finished_courses.push_back(fin_course);
@@ -120,22 +134,22 @@ bool Student::add_finished_course(Course fin_course)
 //Displays information about a course
 void Student::view_course_details(Course course)
 {
-	cout << "Course name: " << course.get_name() << endl;
-	cout << "Course code: " << course.get_code() << endl;
-	cout << "Course credit hours: " << course.get_hours() << endl;
-	cout << "Pre-required courses: ";
-	vector<Course> pre_required = course.get_pre_courses();
-	vector<Course> ::iterator it;
+	std::cout << "Course name: " << course.get_name() << std::endl;
+	std::cout << "Course code: " << course.get_code() << std::endl;
+	std::cout << "Course credit hours: " << course.get_hours() << std::endl;
+	std::cout << "Pre-required courses: ";
+	std::vector<Course> pre_required = course.get_pre_courses();
+	std::vector<Course>::iterator it;
 	int i = 1;
 	for (it = pre_required.begin(); it != pre_required.end(); it++)
-		cout << "#	" << i++ << " " << (*it).get_name() << endl;
+		std::cout << "#	" << i++ << " " << (*it).get_name() << std::endl;
 
 }
 //Displays all avliabel courses
-void Student::view_courses_Available(Data& data)
-{
-	vector<Course> ::iterator it;
-	cout << "Avialabe Courses Are: \n";
-	for (it = data.Avialabe_Courses.begin(); it != data.Avialabe_Courses.end(); it++)
-		cout << (*it).get_name() << endl;
-}
+//void Student::view_courses_Available(Data& data)
+//{
+//	vector<Course> ::iterator it;
+//	cout << "Avialabe Courses Are: \n";
+//	for (it = data.Avialabe_Courses.begin(); it != data.Avialabe_Courses.end(); it++)
+//		cout << (*it).get_name() << endl;
+//}
