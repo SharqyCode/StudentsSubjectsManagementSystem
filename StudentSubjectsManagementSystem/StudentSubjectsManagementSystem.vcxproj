@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Admin\Admin.cpp" />
     <ClCompile Include="Course\Course.cpp" />
     <ClCompile Include="Database\DatabaseHandler.cpp" />
     <ClCompile Include="main.cpp" />
@@ -120,6 +121,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin\Admin.h" />
     <ClInclude Include="Course\Course.h" />
     <ClInclude Include="Database\DatabaseHandler.h" />
     <ClInclude Include="Student\Student.h" />
