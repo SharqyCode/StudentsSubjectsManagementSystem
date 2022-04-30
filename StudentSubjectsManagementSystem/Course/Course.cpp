@@ -1,85 +1,94 @@
+// changed comments case
+// changed some valiables names
+// changed academic_year data type
+// added forward declaration for DatabaseHandler class
+// added dbh attribute
+// constructor overloading
+// removed std namespace usage
+
 #include "Course.h"
 
-//Intializes the data
-Course::Course(string my_name, int my_code, int my_hours, int mns)
+// initialization
+Course::Course() {}
+Course::Course(std::string name, int code, int hours, int max_num_of_students)
 {
-	name = my_name;
-	code = my_code;
-	hours = my_hours;
-	max_num_of_students = mns;
+	this->name = name;
+	this->code = code;
+	this->hours = hours;
+	this->max_num_of_students = max_num_of_students;
 }
-//Gets course name
-string Course::get_name()
-{
-	return name;
-}
-//Gets course code
+// returns course code
 int Course::get_code()
 {
 	return code;
 }
-//Gets course credit hours
+// returns course name
+std::string Course::get_name()
+{
+	return name;
+}
+// returns course credit hours
 int Course::get_hours()
 {
 	return hours;
 }
-//Gets course max-num of students
+// returns course max num of students
 int Course::get_max_num_of_students()
 {
 	return max_num_of_students;
 }
-//Gets the list of pre-requisets for a course
-vector<Course> Course::get_pre_courses()
+// returns list of pre-requisets for a course
+std::vector<Course> Course::get_pre_courses()
 {
 	return pre_courses;
 }
-//Edits course name
-void Course::set_name(string new_name)
+// set course name
+void Course::set_name(std::string name)
 {
-	name = new_name;
+	this->name = name;
 }
-//Edits course code
-void Course::set_code(int new_code)
+// set course code
+void Course::set_code(int code)
 {
-	code = new_code;
+	this->code = code;
 }
-//Edits course credit hours
-void Course::set_hours(int new_hours)
+// set course credit hours
+void Course::set_hours(int hours)
 {
-	hours = new_hours;
+	this->hours = hours;
 }
-//Edits the max-num of students for a course
-void Course::set_max_num_of_students(int new_nms)
+// set the max-num of students for a course
+void Course::set_max_num_of_students(int max_num_of_students)
 {
-	max_num_of_students = new_nms;
+	this->max_num_of_students = max_num_of_students;
 }
-//Sets the list of pre-requisits for a course
-void Course::set_pre_course_list(vector<Course> new_pre_courses)
+// set list of pre-requisits for a course
+void Course::set_pre_course_list(std::vector<Course> pre_courses)
 {
-	pre_courses = new_pre_courses;
+	this->pre_courses = pre_courses;
 }
-//Displays info about the course
+// displays info about the course
 void Course::view_course_data(Course this_course)
 {
-	cout << "---Course Data---" << endl;
-	cout << "Name: " << this_course.name << endl;
-	cout << "Code: " << this_course.code << endl;
-	cout << "Hours: " << this_course.hours << endl;
-	cout << "Max number of students: " << this_course.max_num_of_students << endl;
-	cout << "Pre-required courses: " << endl;
-	vector<Course>::iterator it;
+	std::cout << "---Course Data---" << std::endl;
+	std::cout << "Name: " << this_course.name << std::endl;
+	std::cout << "Code: " << this_course.code << std::endl;
+	std::cout << "Hours: " << this_course.hours << std::endl;
+	std::cout << "Max number of students: " << this_course.max_num_of_students << std::endl;
+	std::cout << "Pre-required courses: " << std::endl;
+	std::vector<Course>::iterator it;
 	int i = 1;
 	for (it = pre_courses.begin(); it != pre_courses.end(); it++)
 	{
-		cout << "#	" << i++ << " " << (*it).name << endl;
+		std::cout << "#	" << i++ << " " << (*it).name << std::endl;
 	}
 }
 //Edits all values at once
-void Course::edit_course(Course new_course)
-{
-	set_name(new_course.name);
-	set_code(new_course.code);
-	set_hours(new_course.hours);
-	set_max_num_of_students(new_course.max_num_of_students);
-	set_pre_course_list(new_course.pre_courses);
-}
+//void Course::edit_course(Course new_course)
+//{
+//	set_name(new_course.name);
+//	set_code(new_course.code);
+//	set_hours(new_course.hours);
+//	set_max_num_of_students(new_course.max_num_of_students);
+//	set_pre_course_list(new_course.pre_courses);
+//}
