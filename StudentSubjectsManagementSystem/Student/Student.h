@@ -4,25 +4,24 @@
 #include <vector>
 #include "../Course/Course.h"
 
-// forward decleration for DatabaseHandler class as it's including this class too.
+// forward decleration for DatabaseHandler class and GLOBAL_DATA as it's including this class too.
 class DatabaseHandler;
+class GLOBAL_DATA;
 
 class Student
 {
 private:
 	// attributes
-	DatabaseHandler* dbh;
+	GLOBAL_DATA* gd;
 	std::string id;
 	std::string name;
 	std::string password;
 	std::string academic_year;
+public:
 	std::vector<Course> finished_courses;
 	std::vector<Course> courses_in_progress;
 public:
 	// methods
-	// constructor
-	Student();
-	Student(std::string, std::string, std::string, std::string);
 	// getters
 	std::string get_id();
 	std::string get_name();
@@ -37,9 +36,8 @@ public:
 	void set_academic_year(std::string);
 	// functionalities
 	//void edit_student(Student);
-	bool register_course(Course);
+	bool enroll_course(Course);
 	bool add_finished_course(Course);
-	void view_course_details(Course);
 	//void view_courses_Available(Data& data);
 	void view_all_Courses();
 	bool login(std::string, std::string);
