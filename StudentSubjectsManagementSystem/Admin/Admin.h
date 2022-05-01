@@ -4,27 +4,34 @@
 #include<iostream>
 #include"../Student/Student.h"
 #include"../Course/Course.h"
-
-// forward decleration for DatabaseHandler class as it's including this class too.
-class DatabaseHandler;
+#include"../Database/GlobalData.h"
 
 class Admin
 {
 private:
 	// attributes
+	GlobalData* gd;
+	std::string username;
 	std::string name;
 	std::string password;
 public:
 	// methods
-	// constructor
-	bool login(std::string name, std::string password);
+	// getters
+	std::string get_username();
+	std::string get_name();
+	std::string get_password();
+	// setters
+	void set_username(std::string);
+	void set_name(std::string);
+	void set_password(std::string);
+	// functionalities
+	bool login(std::string, std::string);
+	// students
 	void add_student(Student);
-
-	void list_students(Course course);
+	void list_students_for_course(Course);
 	// courses
 	void add_course(Course);
-	bool set_course_prerequisites(Course& course);
-	bool list_courses_for_student(Student stud);
+	bool set_course_prerequisites(Course&);
+	void list_courses_for_student(Student);
 	void edit_course(Course&);
 };
-

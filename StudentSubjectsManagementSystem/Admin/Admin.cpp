@@ -5,9 +5,38 @@
 // reimplemented list_courses_for_student()
 // reimplemented edit_course()
 // removed std namespace usage
-
 #include "Admin.h"
 
+// returns admin username
+std::string Admin::get_username()
+{
+	return username;
+}
+// returns admin name
+std::string Admin::get_name()
+{
+	return name;
+}
+// returns admin password
+std::string Admin::get_password()
+{
+	return password;
+}
+// set admin name
+void Admin::set_username(std::string username)
+{
+	this->username = username;
+}
+// set admin name
+void Admin::set_name(std::string name)
+{
+	this->name = name;
+}
+// set admin password
+void Admin::set_password(std::string password)
+{
+	this->password = password;
+}
 // admin login
 //bool Admin::login(std::string name, std::string password)
 //{
@@ -15,10 +44,11 @@
 //}
 
 // add new student
-//void Admin::add_student(Student student)
-//{
-	// not implemented
-//}
+void Admin::add_student(Student student)
+{
+	std::string id = student.get_id();
+	gd->students[id] = student;
+}
 
 // add new course
 //void Admin::add_course(Course)
@@ -75,7 +105,7 @@
 //}
 
 // displays all students enrolld in a course
-//void Admin::list_students(Course course)
+//void Admin::list_students_for_course(Course course)
 //{
 	//std::vector<Student> students;
 	//for (int i = 0; i < data.Avialabe_Students.size(); i++) {
@@ -94,7 +124,7 @@
 //}
 
 // display all courses of a student
-bool Admin::list_courses_for_student(Student student)
+void Admin::list_courses_for_student(Student student)
 {
 	// display all finished courses
 	std::cout << "Finished courses: \n";
