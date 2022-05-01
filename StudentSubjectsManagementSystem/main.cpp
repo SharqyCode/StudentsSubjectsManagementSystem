@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Database/DatabaseHandler.h"
+#include "Database/GlobalData.h"
 #include<windows.h>
 
 int main()
@@ -10,16 +11,24 @@ int main()
     dbh.create_db();
     // create tables
     dbh.create_table();
-    //dbh.get_db_connection();
+    // insert test data
+    dbh.insert_test_data();
+    // load global data
+    GlobalData gd;
+    dbh.load_admin_in_memory(gd.admin);
+    dbh.load_students_in_memory(gd.students);
 
-    Student ahmed;
-    ahmed.set_id("20201701822");
-    ahmed.set_name("Aser");
-    ahmed.set_password("1233");
-    ahmed.set_academic_year("2024");
-    dbh.insert_student(ahmed, 1);
+    for (auto& admin : gd.admin) {
+        std::cout << "Info: Loaded from in memory hashtables, admin: " << admin.second.get_name() << std::endl;
+    }
 
-    Sleep(5000);
+    for (auto& x : gd.students) {
+        std::cout << "Info: Loaded from in memory hashtables, student: " << x.second.get_name() << std::endl;
+        std::cout << "Info: Loaded from in memory hashtables, number of finished courses: "<< x.second.finished_courses.size() << std::endl;
+    }
+
+    std::string pause;
+    std::cin >> pause;
+
     return 0;
 }
- 
