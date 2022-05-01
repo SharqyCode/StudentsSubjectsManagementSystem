@@ -5,18 +5,8 @@
 // added dbh attribute
 // constructor overloading
 // removed std namespace usage
-
 #include "Course.h"
 
-// initialization
-Course::Course() {}
-Course::Course(std::string name, int code, int hours, int max_num_of_students)
-{
-	this->name = name;
-	this->code = code;
-	this->hours = hours;
-	this->max_num_of_students = max_num_of_students;
-}
 // returns course code
 int Course::get_code()
 {

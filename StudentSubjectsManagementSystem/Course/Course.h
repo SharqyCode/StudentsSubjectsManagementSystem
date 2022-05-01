@@ -3,14 +3,15 @@
 #include<vector>
 #include <iostream>
 
-// forward decleration for DatabaseHandler class as it's including this class too.
+// forward decleration for DatabaseHandler class and GLOBAL_DATA as it's including this class too.
 class DatabaseHandler;
+class GLOBAL_DATA;
 
 class Course
 {
 private:
 	// attributes
-	DatabaseHandler* dbh;
+	GLOBAL_DATA* gd;
 	std::string name;
 	int code;
 	int hours;//Course credit hours
@@ -18,9 +19,6 @@ private:
 	std::vector<Course> pre_courses;//A vector that will carry pre-required courses
 public:
 	// methods
-	// constructor
-	Course();
-	Course(std::string, int, int, int);
 	// getters
 	std::string get_name();
 	int get_code();
