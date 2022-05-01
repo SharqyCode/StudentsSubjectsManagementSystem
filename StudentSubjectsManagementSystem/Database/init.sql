@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS course(code integer PRIMARY KEY, hours integer NOT NU
 
 CREATE TABLE IF NOT EXISTS prereq(course integer, req_course integer, PRIMARY KEY(course, req_course), FOREIGN KEY(course) REFERENCES course(code) ON DELETE CASCADE ON UPDATE NO ACTION, FOREIGN KEY(req_course) REFERENCES course(code) ON DELETE CASCADE ON UPDATE NO ACTION);
 
-CREATE TABLE IF NOT EXISTS enrolled(stud_id integer, course_code integer, PRIMARY KEY(stud_id, course_code), FOREIGN KEY(stud_id) REFERENCES student(id) ON DELETE CASCADE ON UPDATE NO ACTION, FOREIGN KEY(course_code) REFERENCES course(code) ON DELETE CASCADE ON UPDATE NO ACTION);
+CREATE TABLE IF NOT EXISTS enrolled(stud_id integer, course_code integer, status integer, PRIMARY KEY(stud_id, course_code), FOREIGN KEY(stud_id) REFERENCES student(id) ON DELETE CASCADE ON UPDATE NO ACTION, FOREIGN KEY(course_code) REFERENCES course(code) ON DELETE CASCADE ON UPDATE NO ACTION);
