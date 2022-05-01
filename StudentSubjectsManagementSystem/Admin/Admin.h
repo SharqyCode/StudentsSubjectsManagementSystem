@@ -1,26 +1,30 @@
-//Includeing needed libraries and courses
 #pragma once
 #include<vector>
 #include<string>
 #include<iostream>
-#include"Student.h"
-#include"Course.h"
-#include"Data.h"
-using namespace std;
+#include"../Student/Student.h"
+#include"../Course/Course.h"
+
+// forward decleration for DatabaseHandler class as it's including this class too.
+class DatabaseHandler;
+
 class Admin
 {
-	//Member Variables
 private:
-	string name;
-	string password;
+	// attributes
+	std::string name;
+	std::string password;
 public:
-	//Admin Functionalities
-	bool Login(string name, string password);
-	void Add_Stud(Data& data);
-	void Add_Course(Data& data);
-	bool Enter_pre_required(Course& course, Data& data);
-	void List_Stud(Course course, Data& data);
-	bool List_Course(Student stud, Data& data);
-	bool Edit_Course(Data& data);
+	// methods
+	// constructor
+	bool login(std::string name, std::string password);
+	void add_student(Student);
+
+	void list_students(Course course);
+	// courses
+	void add_course(Course);
+	bool set_course_prerequisites(Course& course);
+	bool list_courses_for_student(Student stud);
+	void edit_course(Course&);
 };
 
