@@ -2,10 +2,13 @@
 #include "Database/DatabaseHandler.h"
 #include "Database/GlobalData.h"
 #include<windows.h>
-
-int main()
+#include "Home.h"
+using namespace StudentSubjectsManagementSystem;
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-    std::cout << "Initializing DB\n";
+    Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    Application::Run(gcnew Home());  std::cout << "Initializing DB\n";
     DatabaseHandler dbh;
     // create db
     dbh.create_db();
@@ -24,11 +27,10 @@ int main()
 
     for (auto& x : gd.students) {
         std::cout << "Info: Loaded from in memory hashtables, student: " << x.second.get_name() << std::endl;
-        std::cout << "Info: Loaded from in memory hashtables, number of finished courses: "<< x.second.finished_courses.size() << std::endl;
+        std::cout << "Info: Loaded from in memory hashtables, number of finished courses: " << x.second.finished_courses.size() << std::endl;
     }
 
     std::string pause;
     std::cin >> pause;
-
     return 0;
 }

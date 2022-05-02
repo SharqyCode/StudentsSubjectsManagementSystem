@@ -90,6 +90,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -111,25 +112,83 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdminLogin.cpp" />
+    <ClCompile Include="AdminPanel.cpp" />
+    <ClCompile Include="AdminP_Course.cpp" />
+    <ClCompile Include="AdminP_Student.cpp" />
     <ClCompile Include="Admin\Admin.cpp" />
     <ClCompile Include="Course\Course.cpp" />
     <ClCompile Include="Database\DatabaseHandler.cpp" />
     <ClCompile Include="Database\GlobalData.cpp" />
+    <ClCompile Include="Home.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StudentLogin.cpp" />
+    <ClCompile Include="StudentPortal.cpp" />
     <ClCompile Include="Student\Student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdminLogin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminPanel.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminP_Course.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminP_Student.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Admin\Admin.h" />
     <ClInclude Include="Course\Course.h" />
     <ClInclude Include="Database\DatabaseHandler.h" />
     <ClInclude Include="Database\GlobalData.h" />
+    <ClInclude Include="Home.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentLogin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentPortal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Student\Student.h" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="Database\sqlite3.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AdminLogin.resx">
+      <DependentUpon>AdminLogin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPanel.resx">
+      <DependentUpon>AdminPanel.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminP_Course.resx">
+      <DependentUpon>AdminP_Course.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminP_Student.resx">
+      <DependentUpon>AdminP_Student.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentLogin.resx">
+      <DependentUpon>StudentLogin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentPortal.resx">
+      <DependentUpon>StudentPortal.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
