@@ -1,5 +1,5 @@
 #pragma once
-#include "StudentPortal.h" ;
+#include "StudentPortal.h" 
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;

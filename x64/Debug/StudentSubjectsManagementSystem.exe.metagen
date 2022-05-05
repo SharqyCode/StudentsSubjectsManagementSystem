@@ -3,7 +3,9 @@
   StudentSubjectsManagementSystem.AdminP_Course.resources - Embedded, ContainedInManifestFile, 
   StudentSubjectsManagementSystem.AdminP_Student.resources - Embedded, ContainedInManifestFile, 
   StudentSubjectsManagementSystem.Home.resources - Embedded, ContainedInManifestFile, 
+  StudentSubjectsManagementSystem.Myself.resources - Embedded, ContainedInManifestFile, 
   StudentSubjectsManagementSystem.StudentLogin.resources - Embedded, ContainedInManifestFile, 
+  StudentSubjectsManagementSystem.StudentPortal.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly StudentSubjectsManagementSystem, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
@@ -37,6 +39,12 @@ Class StudentSubjectsManagementSystem.AdminPanel: AutoLayout, AnsiClass, Class, 
 Class StudentSubjectsManagementSystem.AdminLogin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class StudentSubjectsManagementSystem.Myself1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Form backform3 : Public
 Class StudentSubjectsManagementSystem.StudentPortal: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

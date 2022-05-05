@@ -43,7 +43,8 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Windows::Forms::Button^ Admin_B;
 	private: System::Windows::Forms::Button^ Student_B;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ close;
+
 
 
 
@@ -79,8 +80,8 @@ namespace StudentSubjectsManagementSystem {
 			this->Admin_B = (gcnew System::Windows::Forms::Button());
 			this->Student_B = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->close = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->close))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Admin_B
@@ -92,9 +93,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Admin_B->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Admin_B->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->Admin_B->Location = System::Drawing::Point(218, 398);
+			this->Admin_B->Location = System::Drawing::Point(164, 323);
+			this->Admin_B->Margin = System::Windows::Forms::Padding(2);
 			this->Admin_B->Name = L"Admin_B";
-			this->Admin_B->Size = System::Drawing::Size(135, 43);
+			this->Admin_B->Size = System::Drawing::Size(101, 35);
 			this->Admin_B->TabIndex = 5;
 			this->Admin_B->Text = L"Admin";
 			this->Admin_B->UseVisualStyleBackColor = false;
@@ -109,9 +111,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Student_B->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Student_B->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->Student_B->Location = System::Drawing::Point(417, 398);
+			this->Student_B->Location = System::Drawing::Point(313, 323);
+			this->Student_B->Margin = System::Windows::Forms::Padding(2);
 			this->Student_B->Name = L"Student_B";
-			this->Student_B->Size = System::Drawing::Size(135, 43);
+			this->Student_B->Size = System::Drawing::Size(101, 35);
 			this->Student_B->TabIndex = 7;
 			this->Student_B->Text = L"Student";
 			this->Student_B->UseVisualStyleBackColor = false;
@@ -128,43 +131,47 @@ namespace StudentSubjectsManagementSystem {
 			this->button1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)),
 				static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(194)));
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Rounded MT Bold", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)), static_cast<System::Int32>(static_cast<System::Byte>(194)),
 				static_cast<System::Int32>(static_cast<System::Byte>(194)));
-			this->button1->Location = System::Drawing::Point(571, 98);
+			this->button1->Location = System::Drawing::Point(428, 80);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(135, 43);
+			this->button1->Size = System::Drawing::Size(101, 35);
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Student";
 			this->button1->UseVisualStyleBackColor = false;
 			// 
-			// pictureBox1
+			// close
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)), static_cast<System::Int32>(static_cast<System::Byte>(194)),
+			this->close->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)), static_cast<System::Int32>(static_cast<System::Byte>(194)),
 				static_cast<System::Int32>(static_cast<System::Byte>(194)));
-			this->pictureBox1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(682, 2);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(49, 52);
-			this->pictureBox1->TabIndex = 8;
-			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &Home::pictureBox1_Click);
+			this->close->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->close->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"close.Image")));
+			this->close->Location = System::Drawing::Point(512, 2);
+			this->close->Margin = System::Windows::Forms::Padding(2);
+			this->close->Name = L"close";
+			this->close->Size = System::Drawing::Size(37, 42);
+			this->close->TabIndex = 8;
+			this->close->TabStop = false;
+			this->close->Click += gcnew System::EventHandler(this, &Home::close_Click);
 			// 
 			// Home
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(743, 516);
-			this->Controls->Add(this->pictureBox1);
+			this->ClientSize = System::Drawing::Size(557, 419);
+			this->Controls->Add(this->close);
 			this->Controls->Add(this->Student_B);
 			this->Controls->Add(this->Admin_B);
 			this->Controls->Add(this->button1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"Home";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Home";
@@ -172,7 +179,7 @@ namespace StudentSubjectsManagementSystem {
 			this->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &Home::Home_MouseDown);
 			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &Home::Home_MouseMove);
 			this->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &Home::Home_MouseUp);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->close))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -213,7 +220,7 @@ private: System::Void Student_B_Click(System::Object^ sender, System::EventArgs^
 			Location = Point(currentScreenPosition.X - offset.X, currentScreenPosition.Y - offset.Y);
 		}
 	}
-	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void close_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		Application::Exit();
 	}

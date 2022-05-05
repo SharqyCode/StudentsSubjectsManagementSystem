@@ -77,9 +77,10 @@ namespace StudentSubjectsManagementSystem {
 			this->label1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(69, 222);
+			this->label1->Location = System::Drawing::Point(52, 180);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(131, 24);
+			this->label1->Size = System::Drawing::Size(98, 20);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Username";
 			// 
@@ -90,27 +91,30 @@ namespace StudentSubjectsManagementSystem {
 			this->label3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(69, 295);
+			this->label3->Location = System::Drawing::Point(52, 240);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(90, 24);
+			this->label3->Size = System::Drawing::Size(68, 20);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Password";
 			// 
 			// panel1
 			// 
 			this->panel1->BackColor = System::Drawing::Color::Black;
-			this->panel1->Location = System::Drawing::Point(73, 274);
+			this->panel1->Location = System::Drawing::Point(55, 223);
+			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(181, 2);
+			this->panel1->Size = System::Drawing::Size(136, 2);
 			this->panel1->TabIndex = 3;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &AdminLogin::panel1_Paint);
 			// 
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Black;
-			this->panel2->Location = System::Drawing::Point(73, 346);
+			this->panel2->Location = System::Drawing::Point(55, 281);
+			this->panel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(181, 2);
+			this->panel2->Size = System::Drawing::Size(136, 2);
 			this->panel2->TabIndex = 4;
 			// 
 			// UserName_In
@@ -120,9 +124,10 @@ namespace StudentSubjectsManagementSystem {
 			this->UserName_In->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->UserName_In->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->UserName_In->Location = System::Drawing::Point(73, 250);
+			this->UserName_In->Location = System::Drawing::Point(55, 203);
+			this->UserName_In->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->UserName_In->Name = L"UserName_In";
-			this->UserName_In->Size = System::Drawing::Size(181, 23);
+			this->UserName_In->Size = System::Drawing::Size(136, 19);
 			this->UserName_In->TabIndex = 5;
 			this->UserName_In->TextChanged += gcnew System::EventHandler(this, &AdminLogin::UserName_In_TextChanged);
 			this->UserName_In->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AdminLogin::UserName_In_KeyDown);
@@ -134,10 +139,11 @@ namespace StudentSubjectsManagementSystem {
 			this->Password_In->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->Password_In->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Password_In->Location = System::Drawing::Point(73, 322);
+			this->Password_In->Location = System::Drawing::Point(55, 262);
+			this->Password_In->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Password_In->Name = L"Password_In";
 			this->Password_In->PasswordChar = '~';
-			this->Password_In->Size = System::Drawing::Size(181, 23);
+			this->Password_In->Size = System::Drawing::Size(136, 19);
 			this->Password_In->TabIndex = 6;
 			this->Password_In->TextChanged += gcnew System::EventHandler(this, &AdminLogin::Password_In_TextChanged);
 			this->Password_In->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AdminLogin::Password_In_KeyDown);
@@ -149,9 +155,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Login_B->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Login_B->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->Login_B->Location = System::Drawing::Point(73, 363);
+			this->Login_B->Location = System::Drawing::Point(55, 295);
+			this->Login_B->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Login_B->Name = L"Login_B";
-			this->Login_B->Size = System::Drawing::Size(86, 38);
+			this->Login_B->Size = System::Drawing::Size(64, 31);
 			this->Login_B->TabIndex = 7;
 			this->Login_B->Text = L"Login";
 			this->Login_B->UseVisualStyleBackColor = true;
@@ -165,9 +172,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Exit_B->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Exit_B->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->Exit_B->Location = System::Drawing::Point(165, 363);
+			this->Exit_B->Location = System::Drawing::Point(124, 295);
+			this->Exit_B->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Exit_B->Name = L"Exit_B";
-			this->Exit_B->Size = System::Drawing::Size(88, 38);
+			this->Exit_B->Size = System::Drawing::Size(66, 31);
 			this->Exit_B->TabIndex = 8;
 			this->Exit_B->Text = L"Exit";
 			this->Exit_B->UseVisualStyleBackColor = false;
@@ -175,11 +183,11 @@ namespace StudentSubjectsManagementSystem {
 			// 
 			// AdminLogin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(725, 469);
+			this->ClientSize = System::Drawing::Size(544, 381);
 			this->Controls->Add(this->Exit_B);
 			this->Controls->Add(this->Login_B);
 			this->Controls->Add(this->Password_In);
@@ -190,6 +198,8 @@ namespace StudentSubjectsManagementSystem {
 			this->Controls->Add(this->label1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"AdminLogin";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminLogin";
