@@ -117,12 +117,15 @@
     <ClCompile Include="AdminP_Course.cpp" />
     <ClCompile Include="AdminP_Student.cpp" />
     <ClCompile Include="Admin\Admin.cpp" />
+    <ClCompile Include="Admin_studentSearch.cpp" />
+    <ClCompile Include="Courses.cpp" />
     <ClCompile Include="Course\Course.cpp" />
     <ClCompile Include="Database\DatabaseHandler.cpp" />
     <ClCompile Include="Database\GlobalData.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Myself.cpp" />
+    <ClCompile Include="Modify.cpp" />
+    <ClCompile Include="studentData.cpp" />
     <ClCompile Include="StudentLogin.cpp" />
     <ClCompile Include="StudentPortal.cpp" />
     <ClCompile Include="Student\Student.cpp" />
@@ -144,13 +147,22 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Admin\Admin.h" />
+    <ClInclude Include="Admin_studentSearch.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Courses.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Course\Course.h" />
     <ClInclude Include="Database\DatabaseHandler.h" />
     <ClInclude Include="Database\GlobalData.h" />
     <ClInclude Include="Home.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Myself.h">
+    <ClInclude Include="Modify.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="studentData.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="StudentLogin.h">
@@ -184,11 +196,20 @@
     <EmbeddedResource Include="AdminP_Student.resx">
       <DependentUpon>AdminP_Student.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin_studentSearch.resx">
+      <DependentUpon>Admin_studentSearch.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Courses.resx">
+      <DependentUpon>Courses.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Myself.resx">
-      <DependentUpon>Myself.h</DependentUpon>
+    <EmbeddedResource Include="Modify.resx">
+      <DependentUpon>Modify.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentData.resx">
+      <DependentUpon>studentData.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentLogin.resx">
       <DependentUpon>StudentLogin.h</DependentUpon>

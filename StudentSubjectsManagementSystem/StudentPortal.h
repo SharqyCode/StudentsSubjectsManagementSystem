@@ -1,5 +1,5 @@
 #pragma once
-#include"Myself.h" ;
+#include"studentData.h";
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -96,10 +96,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Exit_B->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Exit_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Exit_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Exit_B.Image")));
-			this->Exit_B->Location = System::Drawing::Point(421, 126);
-			this->Exit_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Exit_B->Location = System::Drawing::Point(316, 102);
+			this->Exit_B->Margin = System::Windows::Forms::Padding(2);
 			this->Exit_B->Name = L"Exit_B";
-			this->Exit_B->Size = System::Drawing::Size(172, 142);
+			this->Exit_B->Size = System::Drawing::Size(129, 115);
 			this->Exit_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Exit_B->TabIndex = 2;
 			this->Exit_B->TabStop = false;
@@ -111,10 +111,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Myself_B->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Myself_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Myself_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Myself_B.Image")));
-			this->Myself_B->Location = System::Drawing::Point(104, 126);
-			this->Myself_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Myself_B->Location = System::Drawing::Point(78, 102);
+			this->Myself_B->Margin = System::Windows::Forms::Padding(2);
 			this->Myself_B->Name = L"Myself_B";
-			this->Myself_B->Size = System::Drawing::Size(172, 142);
+			this->Myself_B->Size = System::Drawing::Size(129, 115);
 			this->Myself_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Myself_B->TabIndex = 3;
 			this->Myself_B->TabStop = false;
@@ -127,10 +127,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Course_B->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Course_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Course_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Course_B.Image")));
-			this->Course_B->Location = System::Drawing::Point(104, 273);
-			this->Course_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Course_B->Location = System::Drawing::Point(78, 222);
+			this->Course_B->Margin = System::Windows::Forms::Padding(2);
 			this->Course_B->Name = L"Course_B";
-			this->Course_B->Size = System::Drawing::Size(172, 142);
+			this->Course_B->Size = System::Drawing::Size(129, 115);
 			this->Course_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Course_B->TabIndex = 4;
 			this->Course_B->TabStop = false;
@@ -143,10 +143,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Register_B->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Register_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Register_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Register_B.Image")));
-			this->Register_B->Location = System::Drawing::Point(421, 273);
-			this->Register_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Register_B->Location = System::Drawing::Point(316, 222);
+			this->Register_B->Margin = System::Windows::Forms::Padding(2);
 			this->Register_B->Name = L"Register_B";
-			this->Register_B->Size = System::Drawing::Size(172, 142);
+			this->Register_B->Size = System::Drawing::Size(129, 115);
 			this->Register_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Register_B->TabIndex = 5;
 			this->Register_B->TabStop = false;
@@ -160,19 +160,17 @@ namespace StudentSubjectsManagementSystem {
 			this->register_panel->Controls->Add(this->register_course_back_B);
 			this->register_panel->Controls->Add(this->course_code_textBox);
 			this->register_panel->Location = System::Drawing::Point(1, 0);
-			this->register_panel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->register_panel->Name = L"register_panel";
-			this->register_panel->Size = System::Drawing::Size(725, 469);
+			this->register_panel->Size = System::Drawing::Size(544, 381);
 			this->register_panel->TabIndex = 6;
 			// 
 			// register_course_back_B
 			// 
 			this->register_course_back_B->BackColor = System::Drawing::Color::Transparent;
 			this->register_course_back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"register_course_back_B.Image")));
-			this->register_course_back_B->Location = System::Drawing::Point(4, 0);
-			this->register_course_back_B->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->register_course_back_B->Location = System::Drawing::Point(3, 0);
 			this->register_course_back_B->Name = L"register_course_back_B";
-			this->register_course_back_B->Size = System::Drawing::Size(55, 57);
+			this->register_course_back_B->Size = System::Drawing::Size(41, 46);
 			this->register_course_back_B->TabIndex = 1;
 			this->register_course_back_B->TabStop = false;
 			this->register_course_back_B->Click += gcnew System::EventHandler(this, &StudentPortal::register_course_back_B_Click);
@@ -180,10 +178,9 @@ namespace StudentSubjectsManagementSystem {
 			// course_code_textBox
 			// 
 			this->course_code_textBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->course_code_textBox->Location = System::Drawing::Point(469, 156);
-			this->course_code_textBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->course_code_textBox->Location = System::Drawing::Point(352, 127);
 			this->course_code_textBox->Name = L"course_code_textBox";
-			this->course_code_textBox->Size = System::Drawing::Size(199, 15);
+			this->course_code_textBox->Size = System::Drawing::Size(149, 13);
 			this->course_code_textBox->TabIndex = 0;
 			// 
 			// available_courses_panel
@@ -191,32 +188,29 @@ namespace StudentSubjectsManagementSystem {
 			this->available_courses_panel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"available_courses_panel.BackgroundImage")));
 			this->available_courses_panel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->available_courses_panel->Controls->Add(this->avail_course_back_B);
-			this->available_courses_panel->Location = System::Drawing::Point(16, 52);
-			this->available_courses_panel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->available_courses_panel->Location = System::Drawing::Point(1, 0);
 			this->available_courses_panel->Name = L"available_courses_panel";
-			this->available_courses_panel->Size = System::Drawing::Size(725, 469);
+			this->available_courses_panel->Size = System::Drawing::Size(544, 381);
 			this->available_courses_panel->TabIndex = 7;
-			this->available_courses_panel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &StudentPortal::available_courses_panel_Paint);
 			// 
 			// avail_course_back_B
 			// 
 			this->avail_course_back_B->BackColor = System::Drawing::Color::Transparent;
 			this->avail_course_back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"avail_course_back_B.Image")));
-			this->avail_course_back_B->Location = System::Drawing::Point(0, 4);
-			this->avail_course_back_B->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->avail_course_back_B->Location = System::Drawing::Point(0, 3);
 			this->avail_course_back_B->Name = L"avail_course_back_B";
-			this->avail_course_back_B->Size = System::Drawing::Size(55, 57);
+			this->avail_course_back_B->Size = System::Drawing::Size(41, 46);
 			this->avail_course_back_B->TabIndex = 2;
 			this->avail_course_back_B->TabStop = false;
 			this->avail_course_back_B->Click += gcnew System::EventHandler(this, &StudentPortal::avail_course_back_B_Click);
 			// 
 			// StudentPortal
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(725, 469);
+			this->ClientSize = System::Drawing::Size(544, 381);
 			this->Controls->Add(this->available_courses_panel);
 			this->Controls->Add(this->register_panel);
 			this->Controls->Add(this->Register_B);
@@ -226,7 +220,7 @@ namespace StudentSubjectsManagementSystem {
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"StudentPortal";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"StudentPortal";
@@ -274,7 +268,8 @@ namespace StudentSubjectsManagementSystem {
 	}
 	private: System::Void Myself_B_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		Myself1^ obj = gcnew Myself1(this);
+		studentData^ obj = gcnew studentData(this);
+		//Myself^ obj = gcnew Myself(this);
 		obj->ShowDialog();
 
 	}
@@ -311,8 +306,6 @@ private: System::Void register_course_back_B_Click(System::Object^ sender, Syste
 }
 private: System::Void avail_course_back_B_Click(System::Object^ sender, System::EventArgs^ e) {
 	available_courses_panel->Hide();
-}
-private: System::Void available_courses_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 };
 

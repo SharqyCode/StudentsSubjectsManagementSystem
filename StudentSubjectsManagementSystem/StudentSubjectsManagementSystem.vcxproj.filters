@@ -54,7 +54,16 @@
     <ClCompile Include="AdminP_Course.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Myself.cpp">
+    <ClCompile Include="studentData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Courses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Admin_studentSearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,7 +107,16 @@
     <ClInclude Include="AdminP_Course.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Myself.h">
+    <ClInclude Include="studentData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modify.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Courses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Admin_studentSearch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1179,6 +1179,7 @@ private: System::Windows::Forms::TextBox^ textBox5;
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(152, 13);
 			this->textBox5->TabIndex = 3;
+			this->textBox5->TextChanged += gcnew System::EventHandler(this, &AdminP_Course::textBox5_TextChanged);
 			// 
 			// search_back_B
 			// 
@@ -1384,5 +1385,7 @@ private: System::Void search_back__B_Click(System::Object^ sender, System::Event
 	view_students_panel->Hide();
 }
 
+private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

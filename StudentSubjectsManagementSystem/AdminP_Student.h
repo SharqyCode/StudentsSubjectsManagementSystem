@@ -1,5 +1,5 @@
 #pragma once
-
+#include"Admin_studentSearch.h"
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -30,7 +30,6 @@ namespace StudentSubjectsManagementSystem {
 			//Hide Pannels
 			Add_Student_panel->Hide();
 			Delete_Student_panel->Hide();
-			Search_Student_panel->Hide();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -57,9 +56,9 @@ namespace StudentSubjectsManagementSystem {
 
 
 	private: System::Windows::Forms::PictureBox^ delete_back_B;
-	private: System::Windows::Forms::Panel^ Search_Student_panel;
-	private: System::Windows::Forms::PictureBox^ Search_Back_B;
-	private: System::Windows::Forms::DataGridView^ Grid_View_Courses;
+
+
+
 
 
 
@@ -91,10 +90,11 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Windows::Forms::Label^ ID_label;
 	private: System::Windows::Forms::TextBox^ Student_Name;
 	private: System::Windows::Forms::Label^ NAME_label;
-	private: System::Windows::Forms::TextBox^ student_search_textBox;
+
 	private: System::Windows::Forms::ToolTip^ add_studentent_toolTip;
 	private: System::Windows::Forms::ToolTip^ delete_student_toolTip;
 	private: System::Windows::Forms::ToolTip^ search_student_toolTip;
+
 	private: System::ComponentModel::IContainer^ components;
 
 	protected:
@@ -123,10 +123,6 @@ namespace StudentSubjectsManagementSystem {
 			this->delete_back_B = (gcnew System::Windows::Forms::PictureBox());
 			this->ID_Delete_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->Delete_Student_B = (gcnew System::Windows::Forms::PictureBox());
-			this->Search_Student_panel = (gcnew System::Windows::Forms::Panel());
-			this->student_search_textBox = (gcnew System::Windows::Forms::TextBox());
-			this->Search_Back_B = (gcnew System::Windows::Forms::PictureBox());
-			this->Grid_View_Courses = (gcnew System::Windows::Forms::DataGridView());
 			this->Add_Student_panel = (gcnew System::Windows::Forms::Panel());
 			this->add_Back_B = (gcnew System::Windows::Forms::PictureBox());
 			this->OK_AS_B = (gcnew System::Windows::Forms::Button());
@@ -165,9 +161,6 @@ namespace StudentSubjectsManagementSystem {
 			this->Delete_Student_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->delete_back_B))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Delete_Student_B))->BeginInit();
-			this->Search_Student_panel->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Search_Back_B))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid_View_Courses))->BeginInit();
 			this->Add_Student_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->add_Back_B))->BeginInit();
 			this->password_panel->SuspendLayout();
@@ -295,51 +288,6 @@ namespace StudentSubjectsManagementSystem {
 			this->Delete_Student_B->TabIndex = 0;
 			this->Delete_Student_B->TabStop = false;
 			this->Delete_Student_B->Click += gcnew System::EventHandler(this, &AdminP_Student::Delete_Student_B_Click);
-			// 
-			// Search_Student_panel
-			// 
-			this->Search_Student_panel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Search_Student_panel.BackgroundImage")));
-			this->Search_Student_panel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Search_Student_panel->Controls->Add(this->student_search_textBox);
-			this->Search_Student_panel->Controls->Add(this->Search_Back_B);
-			this->Search_Student_panel->Controls->Add(this->Grid_View_Courses);
-			this->Search_Student_panel->Enabled = false;
-			this->Search_Student_panel->Location = System::Drawing::Point(1, 0);
-			this->Search_Student_panel->Name = L"Search_Student_panel";
-			this->Search_Student_panel->Size = System::Drawing::Size(557, 419);
-			this->Search_Student_panel->TabIndex = 13;
-			// 
-			// student_search_textBox
-			// 
-			this->student_search_textBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->student_search_textBox->Location = System::Drawing::Point(362, 144);
-			this->student_search_textBox->Name = L"student_search_textBox";
-			this->student_search_textBox->Size = System::Drawing::Size(161, 13);
-			this->student_search_textBox->TabIndex = 15;
-			this->student_search_textBox->TextChanged += gcnew System::EventHandler(this, &AdminP_Student::student_search_textBox_TextChanged);
-			// 
-			// Search_Back_B
-			// 
-			this->Search_Back_B->BackColor = System::Drawing::Color::Transparent;
-			this->Search_Back_B->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Search_Back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Search_Back_B.Image")));
-			this->Search_Back_B->Location = System::Drawing::Point(0, 2);
-			this->Search_Back_B->Margin = System::Windows::Forms::Padding(2);
-			this->Search_Back_B->Name = L"Search_Back_B";
-			this->Search_Back_B->Size = System::Drawing::Size(38, 46);
-			this->Search_Back_B->TabIndex = 13;
-			this->Search_Back_B->TabStop = false;
-			this->Search_Back_B->Click += gcnew System::EventHandler(this, &AdminP_Student::Search_Back_B_Click);
-			// 
-			// Grid_View_Courses
-			// 
-			this->Grid_View_Courses->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)),
-				static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(194)));
-			this->Grid_View_Courses->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->Grid_View_Courses->Location = System::Drawing::Point(31, 102);
-			this->Grid_View_Courses->Name = L"Grid_View_Courses";
-			this->Grid_View_Courses->Size = System::Drawing::Size(293, 227);
-			this->Grid_View_Courses->TabIndex = 12;
 			// 
 			// Add_Student_panel
 			// 
@@ -710,7 +658,6 @@ namespace StudentSubjectsManagementSystem {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(557, 419);
-			this->Controls->Add(this->Search_Student_panel);
 			this->Controls->Add(this->Delete_Student_panel);
 			this->Controls->Add(this->Add_Student_panel);
 			this->Controls->Add(this->close);
@@ -738,10 +685,6 @@ namespace StudentSubjectsManagementSystem {
 			this->Delete_Student_panel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->delete_back_B))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Delete_Student_B))->EndInit();
-			this->Search_Student_panel->ResumeLayout(false);
-			this->Search_Student_panel->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Search_Back_B))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid_View_Courses))->EndInit();
 			this->Add_Student_panel->ResumeLayout(false);
 			this->Add_Student_panel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->add_Back_B))->EndInit();
@@ -788,111 +731,105 @@ namespace StudentSubjectsManagementSystem {
 		backform->Show();
 	}
 
-private: System::Void close_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
-	   //All keyDown Functions help ease the user
-	   //experience by moving directly to the next field
-private: System::Void Student_Name_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	if (e->KeyValue == (int)Keys::Enter) {
-		ID_textBox->Focus();
+	private: System::Void close_Click(System::Object^ sender, System::EventArgs^ e) {
+		Application::Exit();
+	}
+		   //All keyDown Functions help ease the user
+		   //experience by moving directly to the next field
+	private: System::Void Student_Name_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyValue == (int)Keys::Enter) {
+			ID_textBox->Focus();
+
+		}
+	}
+	private: System::Void ID_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyValue == (int)Keys::Enter) {
+			Year_textBox->Focus();
+		}
+	}
+
+	private: System::Void Year_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+
+		if (e->KeyValue == (int)Keys::Enter) {
+			Password_textBox->Focus();
+		}
+	}
+	private: System::Void Password_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+
+		if (e->KeyValue == (int)Keys::Enter) {
+			OK_AS_B->PerformClick();
+		}
+	}
+
+	private: System::Void OK_AS_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		//Code to add student to DB & DS
+		Add_Student_panel->Hide();
+	}
+	private: System::Void Add_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+
+	private: System::Void ID_Delete_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyValue == (int)Keys::Enter) {
+			//Add code to delete student
+
+			//COME BACK ONCE DONEWITH EVERYTHING
+			//Output warning message
+		   //DialogResult^ result;
+		   // MessageBox::Show("Are you sure you want to delete the Student with ID *****", "Delete Student",MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
+	private: System::Void Delete_Student_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		//Connect to functionalities to delete student from database & dat structure used.
+	}
+	private: System::Void delete_back_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		//this->Hide();
+		//backform->Show();
+		Delete_Student_panel->Hide();
+	}
+	private: System::Void add_Back_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		//this->Hide();
+		//backform->Show();
+		Add_Student_panel->Hide();
+	}
+	private: System::Void Add_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		Add_Student_panel->Show();
+		//Add student in DS
+	}
+	private: System::Void Delet_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		Delete_Student_panel->Show();
+	}
+	private: System::Void Search_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		Admin_studentSearch^ obj = gcnew Admin_studentSearch(this);
+		obj->ShowDialog();
+	}
+	private: System::Void Search_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void Delete_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void delete_close_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		Delete_Student_panel->Hide();
+	}
+	private: System::Void close_add_B_Click(System::Object^ sender, System::EventArgs^ e) {
+		Add_Student_panel->Hide();
+	}
+	private: System::Void student_search_textBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
 
 	}
-}
-private: System::Void ID_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	if (e->KeyValue == (int)Keys::Enter) {
-		Year_textBox->Focus();
+		   //MouseMove Function
+		   //Displays description upon hoover on button
+	private: System::Void Add_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+
+		add_studentent_toolTip->SetToolTip(Add_B, "Add a new student.");
 	}
-}
+	private: System::Void Delet_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 
-private: System::Void Year_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-
-	if (e->KeyValue == (int)Keys::Enter) {
-		Password_textBox->Focus();
+		delete_student_toolTip->SetToolTip(Delet_B, "Delete a student.");
 	}
-}
-private: System::Void Password_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	private: System::Void Search_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 
-	if (e->KeyValue == (int)Keys::Enter) {
-		OK_AS_B->PerformClick();
+		search_student_toolTip->SetToolTip(Search_B, "Lookup a specific student courses.");
 	}
-}
-
-private: System::Void OK_AS_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	//Code to add student to DB & DS
-	Add_Student_panel->Hide();
-}
-private: System::Void Add_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-
-private: System::Void ID_Delete_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	if (e->KeyValue == (int)Keys::Enter) {
-		//Add code to delete student
-
-		//COME BACK ONCE DONEWITH EVERYTHING
-		//Output warning message
-	   //DialogResult^ result;
-	   // MessageBox::Show("Are you sure you want to delete the Student with ID *****", "Delete Student",MessageBoxButtons::OK, MessageBoxIcon::Warning);
-	}
-}
-private: System::Void Delete_Student_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	//Connect to functionalities to delete student from database & dat structure used.
-}
-private: System::Void delete_back_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	//this->Hide();
-	//backform->Show();
-	Delete_Student_panel->Hide();
-}
-private: System::Void add_Back_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	//this->Hide();
-	//backform->Show();
-	Add_Student_panel->Hide();
-}
-private: System::Void Search_Back_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	//this->Hide();
-	//backform->Show();
-	Search_Student_panel->Hide();
-}
-private: System::Void Add_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	Add_Student_panel->Show();
-	//Add student in DS
-}
-private: System::Void Delet_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	Delete_Student_panel->Show();
-}
-private: System::Void Search_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	Search_Student_panel->Show();
-}
-private: System::Void Search_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void Delete_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void delete_close_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	Delete_Student_panel->Hide();
-}
-private: System::Void search_close_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	Search_Student_panel->Hide();
-}
-private: System::Void close_add_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	Add_Student_panel->Hide();
-}
-private: System::Void student_search_textBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
-
-}
-	   //MouseMove Function
-	   //Displays description upon hoover on button
-private: System::Void Add_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-
-	add_studentent_toolTip->SetToolTip(Add_B,"Add a new student.");
-}
-private: System::Void Delet_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-
-	delete_student_toolTip->SetToolTip(Delet_B,"Delete a student.");
-}
-private: System::Void Search_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-
-	search_student_toolTip->SetToolTip(Search_B,"Lookup a specific student courses.");
-}
-};
+	};
 }
