@@ -1,22 +1,19 @@
 #pragma once
 #include <string>
-#include<vector>
+#include <vector>
 #include <iostream>
-
-// forward decleration for DatabaseHandler class and GLOBAL_DATA as it's including this class too.
-class DatabaseHandler;
-class GLOBAL_DATA;
 
 class Course
 {
 private:
 	// attributes
-	GLOBAL_DATA* gd;
 	std::string name;
 	int code;
-	int hours;//Course credit hours
+	int hours;
 	int max_num_of_students;
-	std::vector<Course> pre_courses;//A vector that will carry pre-required courses
+public:
+	std::vector<Course> prerequisites_courses;
+	std::vector<std::string> enrolled_students_ids;
 public:
 	// methods
 	// getters
@@ -33,5 +30,5 @@ public:
 	void set_pre_course_list(std::vector<Course>);
 	// functionalities
 	void view_course_data(Course);
-	//void edit_course(Course);
+	void edit_course(Course);
 };
