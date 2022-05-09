@@ -20,6 +20,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     GlobalData gd;
     dbh.load_admin_in_memory(gd.admin);
     dbh.load_students_in_memory(gd.students);
+    dbh.load_courses_in_memory(gd.courses);
 
     for (auto& admin : gd.admin) {
         std::cout << "Info: Loaded from in memory hashtables, admin: " << admin.second.get_name() << std::endl;
@@ -28,6 +29,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     for (auto& x : gd.students) {
         std::cout << "Info: Loaded from in memory hashtables, student: " << x.second.get_name() << std::endl;
         std::cout << "Info: Loaded from in memory hashtables, number of finished courses: " << x.second.finished_courses.size() << std::endl;
+    }
+
+    for (auto& course : gd.courses) {
+        std::cout << "Info: Loaded from in memory hashtables, course: " << course.second.get_name() << std::endl;
     }
 
     std::string pause;
