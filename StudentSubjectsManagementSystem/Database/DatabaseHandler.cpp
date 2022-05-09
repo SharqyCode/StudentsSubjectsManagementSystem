@@ -376,6 +376,7 @@ bool DatabaseHandler::load_students_in_memory(std::unordered_map<std::string, St
 
         printf("Student: %s loaded successfully.\n", sqlite3_column_text(result, 1));
     }
+    return true;
 }
 // insert course in the database
 int DatabaseHandler::insert_course(Course course, int admin_id)
@@ -452,5 +453,109 @@ int DatabaseHandler::set_prerequisites_for_course(Course course, std::vector<Cou
             std::cout << "Info: Course prerequisites set successfully" << std::endl;
             return true;
         }
+    }
+}
+// load course prerequisites
+int DatabaseHandler::load_courses_prerequisites(std::string id, std::vector<Course>& prerequisites_course)
+{
+    sqlite3_stmt* result1;
+    // construct query
+    std::string sql("SELECT req_course FROM prereq WHERE course=" + id + ";");
+    std::cout << "Query: " << sql << std::endl;
+    // execute prepared query
+    int exec = sqlite3_prepare_v2(DB, sql.c_str(), -1, &result1, NULL);
+    // check query status
+    if (exec != SQLITE_OK) {
+        std::cerr << "Error: Couldn't query the database [Courses Prerequisites]" << std::endl;
+        return false;
+    }
+    // load all courses
+    std::vector<std::string> prerequisites_course_codes;
+
+    while ((exec = sqlite3_step(result1)) == SQLITE_ROW)
+        prerequisites_course_codes.push_back(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result1, 0))));
+
+    for (std::string course_code : prerequisites_course_codes)
+    {
+        sqlite3_stmt* result2;
+        // construct query
+        std::string sql("SELECT hours,name,max_no_of_stud  FROM course WHERE code=" + course_code + ";");
+        std::cout << "Query: " << sql << std::endl;
+        // execute prepared query
+        int exec = sqlite3_prepare_v2(DB, sql.c_str(), -1, &result2, NULL);
+        // check query status
+        if (exec != SQLITE_OK) {
+            std::cerr << "Error: Couldn't query the database [Courses in progress]" << std::endl;
+            return false;
+        }
+        exec = sqlite3_step(result2);
+        // check if there is at least 1 row
+        if (exec == SQLITE_ROW) {
+            Course course;
+            course.set_code(std::stoi(course_code)); // set course code
+            course.set_hours(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 0))))); // set course hours
+            course.set_name(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 1)))); // set course name
+            course.set_max_num_of_students(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 2))))); // set course max no of student
+
+            prerequisites_course.push_back(course);
+        }
+    }
+}
+// load course enrolled students
+int DatabaseHandler::load_course_students_ids(std::string id, std::vector<std::string>& enrolled_students_ids)
+{
+    sqlite3_stmt* result1;
+    // construct query
+    std::string sql("SELECT stud_id FROM prereq WHERE course_code=" + id + ";");
+    std::cout << "Query: " << sql << std::endl;
+    // execute prepared query
+    int exec = sqlite3_prepare_v2(DB, sql.c_str(), -1, &result1, NULL);
+    // check query status
+    if (exec != SQLITE_OK) {
+        std::cerr << "Error: Couldn't query the database [Courses Enrolled Students]" << std::endl;
+        return false;
+    }
+    // load all students
+    while ((exec = sqlite3_step(result1)) == SQLITE_ROW)
+        enrolled_students_ids.push_back(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result1, 0))));
+}
+// load courses in memory
+bool DatabaseHandler::load_courses_in_memory(std::unordered_map<int, Course>& courses)
+{
+    sqlite3_stmt* result;
+    // construct query
+    std::string sql("SELECT * FROM course");
+    std::cout << "Query: " << sql << std::endl;
+    // execute prepared query
+    int exec = sqlite3_prepare_v2(DB, sql.c_str(), -1, &result, NULL);
+    // check query status
+    if (exec != SQLITE_OK) {
+        std::cerr << "Error: Couldn't query the database for courses" << std::endl;
+        return false;
+    }
+
+    while ((exec = sqlite3_step(result)) == SQLITE_ROW) {
+
+        std::string id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 0)));
+
+        // create student object  
+        Course course;
+
+        course.set_code(std::stoi(id)); // set code
+        course.set_hours(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 1))))); // set course hours
+        course.set_name(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 2)))); // set course name
+        course.set_max_num_of_students(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 3))))); // set course max no of students
+
+        // load courses
+        load_courses_prerequisites(id, course.prerequisites_courses);
+
+        // get enrolled students id from db
+        load_course_students_ids(id, course.enrolled_students_ids);
+
+        // load student to students hash tables
+        int int_id = std::stoi(id);
+        courses[int_id] = course;
+
+        printf("Course: %s loaded successfully.\n", sqlite3_column_text(result, 1));
     }
 }

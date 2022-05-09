@@ -37,5 +37,7 @@ public:
 	// Course
 	int insert_course(Course, int);
 	int set_prerequisites_for_course(Course, std::vector<Course>);
-
+	bool load_courses_in_memory(std::unordered_map<int, Course>& courses);
+	int load_courses_prerequisites(std::string id, std::vector<Course>& prerequisites_prerequisites);
+	int load_course_students_ids(std::string id, std::vector<std::string>& enrolled_students_ids);
 };
