@@ -14,7 +14,10 @@ private:
 public:
 	std::vector<Course> prerequisites_courses;
 	std::vector<std::string> enrolled_students_ids;
+	bool changed;
 public:
+	Course();
+	Course(std::string, int, int, int);
 	// methods
 	// getters
 	std::string get_name();

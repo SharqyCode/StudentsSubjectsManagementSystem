@@ -1,16 +1,19 @@
-// changed comments case
-// changed some valiables names
-// changed academic_year data type
-// added forward declaration for DatabaseHandler class
-// added dbh attribute
-// constructor overloading
-// added id setter
-// changed id to string
-// removed std namespace usage
-// changfed finished_courses and courses_in_progress to public
-// removed view_course_details()
 #include "Student.h"
 
+
+Student::Student()
+{
+	changed = false;
+}
+Student::Student(std::string id, std::string name, std::string password, std::string academic_year)
+{
+	this->id = id;
+	this->name = name;
+	this->password = password;
+	this->academic_year = academic_year;
+
+	changed = false;
+}
 // login functionality
 bool Student::login(std::string input_name, std::string input_pass)
 {
@@ -53,21 +56,25 @@ std::vector<Course> Student::get_courses_in_progress()
 void Student::set_id(std::string id)
 {
 	this->id = id;
+	this->changed = true;
 }
 // set name
 void Student::set_name(std::string name)
 {
 	this->name = name;
+	this->changed = true;
 }
 // set password
 void Student::set_password(std::string password)
 {
 	this->password = password;
+	this->changed = true;
 }
 // set academic year
 void Student::set_academic_year(std::string academic_year)
 {
 	this->academic_year = academic_year;
+	this->changed = true;
 }
 // register new course
 bool Student::enroll_course(Course new_course)
@@ -103,6 +110,9 @@ bool Student::enroll_course(Course new_course)
 	}
 	courses_in_progress.push_back(new_course);
 	std::cout << "Course added succsessfully" << std::endl;
+
+	this->changed = true;
+
 	return true;
 }
 // add finished course
@@ -121,13 +131,8 @@ bool Student::add_finished_course(Course finished_course)
 	}
 	finished_courses.push_back(finished_course);
 	courses_in_progress.erase(courses_in_progress.begin() + index);
+
+	this->changed = true;
+
 	return true;
 }
-//Displays all avliabel courses
-//void Student::view_courses_Available(Data& data)
-//{
-//	vector<Course> ::iterator it;
-//	cout << "Avialabe Courses Are: \n";
-//	for (it = data.Avialabe_Courses.begin(); it != data.Avialabe_Courses.end(); it++)
-//		cout << (*it).get_name() << endl;
-//}

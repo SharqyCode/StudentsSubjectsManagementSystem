@@ -1,5 +1,18 @@
 #include "Course.h"
 
+Course::Course()
+{
+	changed = false;
+}
+Course::Course(std::string name, int code, int hours, int max_num_of_students)
+{
+	this->name = name;
+	this->code = code;
+	this->hours = hours;
+	this->max_num_of_students = max_num_of_students;
+
+	changed = false;
+}
 // returns course code
 int Course::get_code()
 {
@@ -29,26 +42,31 @@ std::vector<Course> Course::get_pre_courses()
 void Course::set_name(std::string name)
 {
 	this->name = name;
+	this->changed = true;
 }
 // set course code
 void Course::set_code(int code)
 {
 	this->code = code;
+	this->changed = true;
 }
 // set course credit hours
 void Course::set_hours(int hours)
 {
 	this->hours = hours;
+	this->changed = true;
 }
 // set the max-num of students for a course
 void Course::set_max_num_of_students(int max_num_of_students)
 {
 	this->max_num_of_students = max_num_of_students;
+	this->changed = true;
 }
 // set list of pre-requisits for a course
 void Course::set_pre_course_list(std::vector<Course> pre_courses)
 {
 	this->prerequisites_courses = pre_courses;
+	this->changed = true;
 }
 // displays info about the course
 void Course::view_course_data(Course this_course)
