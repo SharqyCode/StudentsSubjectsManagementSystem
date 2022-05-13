@@ -226,6 +226,36 @@ int DatabaseHandler::insert_student(Student student, int admin_id)
         return true;
     }
 }
+// delete student from the database
+void DatabaseHandler::delete_student(std::string student_id)
+{
+    sqlite3_stmt* result;
+    char* message_error;
+
+    std::string sql("DELETE FROM student WHERE id="+ student_id +";");
+    std::cout << "Query: " << sql << std::endl;
+    int exec = sqlite3_exec(DB, sql.c_str(), NULL, 0, &message_error);
+    if (exec != SQLITE_OK) {
+        std::cerr << "Error: Couldn't delete student" << std::endl;
+        sqlite3_free(message_error);
+    }
+    else {
+        std::cout << "Info: Deleted student successfully" << std::endl;
+    }
+
+    char* message_error2;
+
+    std::string sql2("DELETE FROM enrolled WHERE stud_id=" + student_id + ";");
+    std::cout << "Query: " << sql << std::endl;
+    exec = sqlite3_exec(DB, sql2.c_str(), NULL, 0, &message_error2);
+    if (exec != SQLITE_OK) {
+        std::cerr << "Error: Couldn't delete course(s)" << std::endl;
+        sqlite3_free(message_error2);
+    }
+    else {
+        std::cout << "Info: Deleted course(s) successfully" << std::endl;
+    }
+}
 // load courses the student enrolled in
 int DatabaseHandler::load_student_courses(std::string id, std::vector<Course>& student_finished_courses, std::vector<Course>& student_courses_in_progress)
 {
@@ -275,11 +305,13 @@ int DatabaseHandler::load_student_courses(std::string id, std::vector<Course>& s
         exec = sqlite3_step(result2);
         // check if there is at least 1 row
         if (exec == SQLITE_ROW) {
-            Course course;
-            course.set_code(std::stoi(course_code)); // set course code
-            course.set_hours(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 0))))); // set course hours
-            course.set_name(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 1)))); // set course name
-            course.set_max_num_of_students(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 2))))); // set course max no of student
+            
+            Course course(
+                std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 1))), // set course name
+                std::stoi(course_code), // set course code
+                std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 0)))), // set course hours
+                std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 2)))) // set course max no of student
+            );
 
             student_courses_in_progress.push_back(course);
         }
@@ -361,12 +393,11 @@ bool DatabaseHandler::load_students_in_memory(std::unordered_map<std::string, St
         std::string id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 0)));
 
         // create student object  
-        Student student;
-
-        student.set_id(id); // set id
-        student.set_name(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 1)))); // set student name
-        student.set_password(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 2)))); // set student password
-        student.set_academic_year(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 3)))); // set student academic_year
+        Student student(id, // set id
+            std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 1))), // set student name
+            std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 2))), // set student password
+            std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 3))) // set student academic_year
+            );
 
         // load courses
         load_student_courses(id, student.finished_courses, student.courses_in_progress);
@@ -403,6 +434,36 @@ int DatabaseHandler::insert_course(Course course, int admin_id)
     else {
         std::cout << "Info: Course inserted successfully" << std::endl;
         return true;
+    }
+}
+// delete course from the database
+void DatabaseHandler::delete_course(std::string course_id)
+{
+    sqlite3_stmt* result;
+    char* message_error;
+
+    std::string sql("DELETE FROM course WHERE code=" + course_id + ";");
+    std::cout << "Query: " << sql << std::endl;
+    int exec = sqlite3_exec(DB, sql.c_str(), NULL, 0, &message_error);
+    if (exec != SQLITE_OK) {
+        std::cerr << "Error: Couldn't delete course" << std::endl;
+        sqlite3_free(message_error);
+    }
+    else {
+        std::cout << "Info: Deleted course successfully" << std::endl;
+    }
+
+    char* message_error2;
+
+    std::string sql2("DELETE FROM prereq WHERE course=" + course_id + " OR req_course="+ course_id +";");
+    std::cout << "Query: " << sql << std::endl;
+    exec = sqlite3_exec(DB, sql2.c_str(), NULL, 0, &message_error2);
+    if (exec != SQLITE_OK) {
+        std::cerr << "Error: Couldn't delete prereq course(s)" << std::endl;
+        sqlite3_free(message_error2);
+    }
+    else {
+        std::cout << "Info: Deleted prereq course(s) successfully" << std::endl;
     }
 }
 // enroll student
@@ -491,11 +552,12 @@ int DatabaseHandler::load_courses_prerequisites(std::string id, std::vector<Cour
         exec = sqlite3_step(result2);
         // check if there is at least 1 row
         if (exec == SQLITE_ROW) {
-            Course course;
-            course.set_code(std::stoi(course_code)); // set course code
-            course.set_hours(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 0))))); // set course hours
-            course.set_name(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 1)))); // set course name
-            course.set_max_num_of_students(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 2))))); // set course max no of student
+            Course course(
+                std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 1))), // set course name
+                std::stoi(course_code), // set course code
+                std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 0)))), // set course hours
+                std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result2, 2)))) // set course max no of student
+                );
 
             prerequisites_course.push_back(course);
         }
@@ -506,7 +568,7 @@ int DatabaseHandler::load_course_students_ids(std::string id, std::vector<std::s
 {
     sqlite3_stmt* result1;
     // construct query
-    std::string sql("SELECT stud_id FROM prereq WHERE course_code=" + id + ";");
+    std::string sql("SELECT stud_id FROM enrolled WHERE course_code=" + id + ";");
     std::cout << "Query: " << sql << std::endl;
     // execute prepared query
     int exec = sqlite3_prepare_v2(DB, sql.c_str(), -1, &result1, NULL);
@@ -539,12 +601,12 @@ bool DatabaseHandler::load_courses_in_memory(std::unordered_map<int, Course>& co
         std::string id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 0)));
 
         // create student object  
-        Course course;
-
-        course.set_code(std::stoi(id)); // set code
-        course.set_hours(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 1))))); // set course hours
-        course.set_name(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 2)))); // set course name
-        course.set_max_num_of_students(std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 3))))); // set course max no of students
+        Course course(
+            std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 2))), // set course name
+            std::stoi(id), // set course code
+            std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 1)))), // set course hours
+            std::stoi(std::string(reinterpret_cast<const char*>(sqlite3_column_text(result, 3)))) // set course max no of student
+        );
 
         // load courses
         load_courses_prerequisites(id, course.prerequisites_courses);
@@ -557,5 +619,37 @@ bool DatabaseHandler::load_courses_in_memory(std::unordered_map<int, Course>& co
         courses[int_id] = course;
 
         printf("Course: %s loaded successfully.\n", sqlite3_column_text(result, 1));
+    }
+}
+
+void DatabaseHandler::save_data_to_db(GlobalData& gd) {
+    // handle students saving
+    for (auto& student : gd.students) {
+        if (student.second.changed)
+        {
+            // delete student
+            delete_student(student.first);
+            // insert student
+            insert_student(student.second, 1);
+            // enroll student in the courses (finished / in-progress)
+            for (Course& course : student.second.finished_courses) {
+                enroll_student(student.second, course, 0);
+            }
+            for (Course& course : student.second.courses_in_progress) {
+                enroll_student(student.second, course, 1);
+            }
+        }
+    }
+    // handle courses saving
+    for (auto& course : gd.courses) {
+        if (course.second.changed)
+        {
+            // delete course
+            delete_course(std::to_string(course.first));
+            // insert course
+            insert_course(course.second, 1);
+            // set prereq courses
+            set_prerequisites_for_course(course.second, course.second.prerequisites_courses);
+        }
     }
 }
