@@ -10,10 +10,10 @@ private:
 	std::string name;
 	int code;
 	int hours;
-	int max_num_of_students;
 public:
 	std::vector<Course> prerequisites_courses;
 	std::vector<std::string> enrolled_students_ids;
+	int max_num_of_students;
 	bool changed;
 public:
 	Course();

@@ -38,10 +38,17 @@ void Admin::set_password(std::string password)
 	this->password = password;
 }
 // admin login
-//bool Admin::login(std::string name, std::string password)
-//{
-	// not implemented
-//}
+bool Admin::login(std::string name, std::string password)
+{
+	std::string user = gd->admin[1].get_name() ;
+	std::string pass = gd->admin[1].get_password();
+	if (user == name && pass == password)
+		return true;
+	else
+		false;
+
+}
+
 
 // add new student
 void Admin::add_student(Student student)
@@ -50,94 +57,85 @@ void Admin::add_student(Student student)
 	gd->students[id] = student;
 }
 
-// add new course
-//void Admin::add_course(Course)
-//{
-	// not implemented
-//}
+//add new course
+void Admin::add_course(Course course)
+{
+	int code = course.get_code();
+	gd->courses[code] = course;
+}
 
 // set pre-requisites for a course
-//bool Admin::set_course_prerequisites(Course& course)
-//{
-//	int cnt = 0;
-//	std::cout << "How many courses to set: ";
-//	std::cin >> cnt;
-//	int size = cnt;
-//	int count = cnt - 1;
-//	int* arr = new int[size];
-//	int course_code;
-//	for (int i = 0; i < cnt; i++) {
-//		std::cout << "Enter course #" << i + 1 << " code: ";
-//		bool fnd = 0;
-//		int in;
-//		std::cin >> course_code;
-//		for (int j = 0; j < data.Avialabe_Courses.size(); j++) {
-//			if (data.Avialabe_Courses[j].get_code() == course_code) {
-//				fnd = 1;
-//				in = j;
-//				break;
-//			}
-//		}
-//		if (!fnd) {
-//			std::cout << "Course not found : press1 to create a new course press2 to skip anything else to exit: ";
-//			int ans;
-//			std::cin >> ans;
-//			if (ans == 1) {
-//				data.Add_Course();
-//				arr[count--] = data.Avialabe_Courses.size() - 1;
-//			}
-//			else if (ans == 2)
-//				continue;
-//			else {
-//				size--;
-//				return false;
-//			}
-//		}
-//		arr[count--] = in;
-//	}
-//	std::vector<Course> pre_required;
-//	for (int i = 0; i < size; i++) {
-//		pre_required.push_back(data.Avialabe_Courses[i]);
-//	}
-//	course.set_pre_course_list(pre_required);
-//	delete[] arr;
-//	return true;
-//}
+bool Admin::set_course_prerequisites(Course course)
+{
+	int cnt = 0;
+	std::cout << "How many courses to set: ";
+	std::cin >> cnt;
+	int size = cnt;
+	int count = cnt - 1;
+	std::vector<Course> pre_required;
+	int course_code;
+	int in = 0;
+	for (int i = 0; i < cnt; i++) {
+		std::cout << "Enter course #" << i + 1 << " code: ";
+		bool fnd = 0;
+		std::cin >> course_code;
+		std::unordered_map<int, Course> ::iterator it;
+		for (it = gd->courses.begin(); it != gd->courses.end(); it++) {
+
+			if (it->second.get_code() == course_code) {
+				fnd = 1;
+				pre_required.push_back(it->second);
+				break;
+			}
+		}
+		if (!fnd) {
+			std::cout << "Course not found ..... add course/N";
+			return false;
+		}
+	}
+
+	course.set_pre_course_list(pre_required);
+	//gd->courses.emplace(course.get_code(), course);
+	gd->courses[course.get_code()] = course;
+	return true;
+}
 
 // displays all students enrolld in a course
-//void Admin::list_students_for_course(Course course)
-//{
-	//std::vector<Student> students;
-	//for (int i = 0; i < data.Avialabe_Students.size(); i++) {
-	//	std::vector<Course> courses = data.Avialabe_Students[i].get_courses_in_progress();
-	//	for (int j = 0; j < courses.size(); j++) {
-	//		if (courses[i].get_name() == course.get_name()) {
-	//			students.push_back(data.Avialabe_Students[i]);
-	//			break;
-	//		}
-	//	}
-	//}
-	//std::cout << "Students in course: \n";
-	//std::vector<Student>::iterator it;
-	//for (it = students.begin(); it != students.end(); it++)
-	//	std::cout << (*it).get_name() << std::endl;
-//}
+void Admin::list_students_for_course(Course course)
+{
+	std::queue<Student> studs_enrolled;
+	std::unordered_map<std::string, Student> ::iterator it;
+	for (it = gd->students.begin(); it != gd->students.end(); it++) {
+		std::vector<Course> courses = it->second.get_courses_in_progress();
+		for (int j = 0; j < courses.size(); j++) {
+			if (courses[j].get_name() == course.get_name()) {
+				studs_enrolled.push(it->second);
+				break;
+			}
+		}
+	}
+	std::cout << "Students in course: \n";
+	for (int i = 0; i < studs_enrolled.size(); i++) {
 
+		std::cout << studs_enrolled.front().get_name() << std::endl;
+		studs_enrolled.pop();
+	}
+}
 // display all courses of a student
 void Admin::list_courses_for_student(Student student)
 {
 	// display all finished courses
 	std::cout << "Finished courses: \n";
 	for (int i = 0; i < student.finished_courses.size(); i++)
-		std::cout << student.get_name() << std::endl;
+		std::cout << student.finished_courses[i].get_name()<< std::endl;
 	// display all In-progress courses
 	std::cout << "In-progress courses: \n";
 	for (int i = 0; i < student.courses_in_progress.size(); i++)
-		std::cout << student.get_name() << std::endl;
+		std::cout << student.courses_in_progress[i].get_name() << std::endl;
 }
 
 // edit course data
-void Admin::edit_course(Course &course)
+void Admin::edit_course(Course course)
 {
 	std::string name;
 	int code, hours, max_number_of_students;

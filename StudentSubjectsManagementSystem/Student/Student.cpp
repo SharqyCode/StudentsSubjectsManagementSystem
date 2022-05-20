@@ -76,11 +76,23 @@ void Student::set_academic_year(std::string academic_year)
 	this->academic_year = academic_year;
 	this->changed = true;
 }
+//Edits student data all at once
+void Student::edit_student(Student stud)
+{
+	this->set_name(stud.name);
+	this->set_password(stud.password);
+	changed = true;
+	//gd->students[id] = *(this);
+}
 // register new course
 bool Student::enroll_course(Course new_course)
 {
 	// make sure pre-requisite complete, not in finished.
 	std::cout << std::endl;
+	if (new_course.get_max_num_of_students() == 0) {
+		std::cout << "Room is full \ n ";
+		return false;
+	}
 	for (int i = 0; i < finished_courses.size(); i++)
 	{
 		if (new_course.get_code() == finished_courses[i].get_code())
@@ -109,10 +121,11 @@ bool Student::enroll_course(Course new_course)
 
 	}
 	courses_in_progress.push_back(new_course);
+	new_course.max_num_of_students--;
+	gd->courses[new_course.get_code()] = new_course;
 	std::cout << "Course added succsessfully" << std::endl;
-
 	this->changed = true;
-
+	gd->students[id] = *(this);
 	return true;
 }
 // add finished course
@@ -129,10 +142,34 @@ bool Student::add_finished_course(Course finished_course)
 		std::cout << "*************Try again***********\n";
 		return false;
 	}
+	finished_course.max_num_of_students++;
 	finished_courses.push_back(finished_course);
+	gd->courses[finished_course.get_code()] = finished_course;
 	courses_in_progress.erase(courses_in_progress.begin() + index);
-
 	this->changed = true;
-
+	gd->students[id] = *(this);
 	return true;
+}
+//Displays all avliabel courses
+void Student::view_courses_available() {
+	std::unordered_map<int, Course>::iterator it;
+	std::cout << "Avialabe Courses Are: \n";
+	for (it = gd->courses.begin(); it != gd->courses.end(); it++) {
+		std::cout << it->second.get_name() << std::endl;
+	}
+}
+void Student::view_course_data(Course course)
+{
+	course.view_course_data(course);
+}
+
+void Student::display_all_courses()
+{
+	std::cout << "Finished courses: \n";
+	for (int i = 0; i < finished_courses.size(); i++)
+		std::cout << finished_courses[i].get_name() << std::endl;
+	// display all In-progress courses
+	std::cout << "In-progress courses: \n";
+	for (int i = 0; i < courses_in_progress.size(); i++)
+		std::cout << courses_in_progress[i].get_name() << std::endl;
 }

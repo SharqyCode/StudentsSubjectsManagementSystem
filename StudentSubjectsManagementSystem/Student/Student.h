@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include "../Course/Course.h"
+#include"../Database/GlobalData.h"
 
 class Student
 {
@@ -12,6 +14,8 @@ private:
 	std::string password;
 	std::string academic_year;
 public:
+
+	GlobalData* gd;
 	std::vector<Course> finished_courses;
 	std::vector<Course> courses_in_progress;
 	bool changed;
@@ -32,9 +36,11 @@ public:
 	void set_password(std::string);
 	void set_academic_year(std::string);
 	// functionalities
-	//void edit_student(Student);
+	void edit_student(Student);
 	bool enroll_course(Course);
 	bool add_finished_course(Course);
-	//void view_courses_Available(Data& data);
+	void view_courses_available();
 	bool login(std::string, std::string);
+	void view_course_data(Course course);
+	void display_all_courses();
 };

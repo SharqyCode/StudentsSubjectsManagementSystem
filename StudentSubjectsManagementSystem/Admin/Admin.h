@@ -1,6 +1,7 @@
 #pragma once
 #include<vector>
 #include<string>
+#include<queue>
 #include<iostream>
 #include"../Student/Student.h"
 #include"../Course/Course.h"
@@ -10,13 +11,14 @@ class Admin
 {
 private:
 	// attributes
-	GlobalData* gd;
 	std::string username;
 	std::string name;
 	std::string password;
 public:
 	// methods
 	// getters
+
+	GlobalData* gd;
 	std::string get_username();
 	std::string get_name();
 	std::string get_password();
@@ -31,7 +33,7 @@ public:
 	void list_students_for_course(Course);
 	// courses
 	void add_course(Course);
-	bool set_course_prerequisites(Course&);
+	bool set_course_prerequisites(Course);
 	void list_courses_for_student(Student);
-	void edit_course(Course&);
+	void edit_course(Course);
 };
