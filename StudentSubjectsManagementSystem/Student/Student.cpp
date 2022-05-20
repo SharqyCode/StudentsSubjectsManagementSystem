@@ -4,6 +4,7 @@
 Student::Student()
 {
 	changed = false;
+	logged_in = false;
 }
 Student::Student(std::string id, std::string name, std::string password, std::string academic_year)
 {
@@ -13,14 +14,21 @@ Student::Student(std::string id, std::string name, std::string password, std::st
 	this->academic_year = academic_year;
 
 	changed = false;
+	logged_in = false;
 }
 // login functionality
-bool Student::login(std::string input_name, std::string input_pass)
+void Student::login(std::string id, std::string password, Student& stud, std::unordered_map<std::string, Student>& students)
 {
-	if (name == input_name && password == input_pass)
-		return true;
-	else
-		return false;
+	for (auto& student : students) {
+		std::string student_id = student.second.get_id();
+		std::string student_password = student.second.get_password();
+
+		if ((student_id == id) && (student_password == password))
+		{
+			student.second.logged_in = true;
+			stud = student.second;
+		}
+	}
 }
 // returns student id
 std::string Student::get_id()
@@ -150,26 +158,17 @@ bool Student::add_finished_course(Course finished_course)
 	gd->students[id] = *(this);
 	return true;
 }
-//Displays all avliabel courses
-void Student::view_courses_available() {
-	std::unordered_map<int, Course>::iterator it;
-	std::cout << "Avialabe Courses Are: \n";
-	for (it = gd->courses.begin(); it != gd->courses.end(); it++) {
-		std::cout << it->second.get_name() << std::endl;
-	}
-}
 void Student::view_course_data(Course course)
 {
 	course.view_course_data(course);
 }
-
 void Student::display_all_courses()
 {
-	std::cout << "Finished courses: \n";
+	std::cout << "Finished courses" << std::endl;
 	for (int i = 0; i < finished_courses.size(); i++)
 		std::cout << finished_courses[i].get_name() << std::endl;
-	// display all In-progress courses
-	std::cout << "In-progress courses: \n";
+
+	std::cout << "In-progress courses" << std::endl;
 	for (int i = 0; i < courses_in_progress.size(); i++)
 		std::cout << courses_in_progress[i].get_name() << std::endl;
 }

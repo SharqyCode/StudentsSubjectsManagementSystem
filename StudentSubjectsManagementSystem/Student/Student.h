@@ -14,11 +14,11 @@ private:
 	std::string password;
 	std::string academic_year;
 public:
-
 	GlobalData* gd;
 	std::vector<Course> finished_courses;
 	std::vector<Course> courses_in_progress;
 	bool changed;
+	bool logged_in;
 public:
 	Student();
 	Student(std::string, std::string, std::string, std::string);
@@ -39,8 +39,7 @@ public:
 	void edit_student(Student);
 	bool enroll_course(Course);
 	bool add_finished_course(Course);
-	void view_courses_available();
-	bool login(std::string, std::string);
+	static void login(std::string, std::string, Student&, std::unordered_map<std::string, Student>&);
 	void view_course_data(Course course);
 	void display_all_courses();
 };

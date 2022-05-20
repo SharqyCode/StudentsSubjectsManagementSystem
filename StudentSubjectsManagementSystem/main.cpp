@@ -66,10 +66,16 @@ int main() {
    // std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n**************************************Student Subject Management System**************************************\n";
     int ans;
-    std::cout << "Welcome Press1 to login as an admin Press2 to login as a student{Press-1 to exit}: ";
+    std::cout << 
+        "Welcome Student" << std::endl <<
+        "press(1) to login as an admin" << std::endl <<
+        "press(2) to login as a student" << std::endl <<
+        "press(0) to exit" << std::endl;
+
     std::cin >> ans;
+
     if (ans == 1) {
-        //Admin
+        // admin
         Admin admin;
         int admin_ans;
         std::string name;
@@ -206,51 +212,46 @@ int main() {
 
     }
     else if (ans == 2) {
-        Student student;
+
         int student_ans;
-        std::string name;
-        std::string password;
-        std::cout << "Username: ";
-        std::cin >> name;
+
+        std::string id, password;
+        std::cout << "Student ID: ";
+        std::cin >> id;
         std::cout << "Password: ";
         std::cin >> password;
-        std::unordered_map<std::string, Student> ::iterator it;
-        bool fnd = 0;
-        for (it = gd.students.begin(); it != gd.students.end(); it++) {
-            student = it->second;
-            student.gd = &gd;
-           if (student.login(name, password)) {
-                fnd = 1;
-                //student = it->second;
-               //std::cout << "correct\n";
-                break;
-            }
-           /* if (it->second.get_name() == name) {
-                fnd = 1;
-                student = it->second;
-                student.gd = &gd;
-                break;
-            }*/
-        }
-        if (!fnd) {
-            std::cout << "'\n!!!!!!!!!!!!!!!!!!!!!!!Wrong user name or password!!!!!!!!!!!!!!!!!!!!!!!\n";
+
+        Student student;
+        Student::login(id, password, student, gd.students);
+
+        if (student.logged_in == false)
+        {
+            std::cout << "Info: Wrong student id or password" << std::endl;
             return 0;
         }
-        do {
 
-            std::cout << "Press1 to view List of all available courses , Press2 to view details of a specific course , Press3 to register for a course \n "
-                << "Press4 to view all his/her courses , Press5 to edit his/her data{Press-1 to exit}\n";
+        do {
+            // print options
+            std::cout << 
+                "Press(1) to view list of all available courses" << std::endl <<
+                "Press(2) to view details of a specific course" << std::endl << 
+                "Press(3) to enroll in a course" << std::endl <<
+                "Press(4) to view all stdunt courses" << std::endl <<
+                "Press(5) to edit student data" << std::endl <<
+                "Press(0) to exit" << std::endl;
+            // take student options
             std::cin >> student_ans;
+
             if (student_ans == 1) {
-               // student.view_courses_available();
-                std::unordered_map<int, Course>  ::iterator it;
-                std::cout << "Avialabe Courses Are: \n";
+                std::unordered_map<int, Course>::iterator it;
+                std::cout << "Available Courses:" << std::endl;
                 for (it = gd.courses.begin(); it != gd.courses.end(); it++) {
                     std::cout << it->second.get_name() << std::endl;
                 }
             }
+
             else if (student_ans == 2) {
-                std::cout << "Enter a course's code: ";
+                std::cout << "Enter course code: ";
                 int code;
                 std::cin >> code;
                 std::unordered_map<int, Course> ::iterator it;
@@ -261,10 +262,11 @@ int main() {
                         break;
                     }
                 }
-                student.view_course_data(course);
+                course.view_course_data(course);
             }
+
             else if (student_ans == 3) {
-                std::cout << "Enter a course's code: ";
+                std::cout << "Enter a course code: ";
                 int code;
                 std::cin >> code;
                 std::unordered_map<int, Course> ::iterator it;
@@ -279,34 +281,36 @@ int main() {
 
                 gd.students[student.get_id()] = student;
             }
+
             else if (student_ans == 4) {
                 student.display_all_courses();
             }
+
             else if (student_ans == 5) {
-                std::cout << "Enter your new data: \n";
-                //Student stud;
+                std::cout << "Enter new data" << std::endl;
+
                 std::string name;
                 std::string password;
+
                 std::cout << "Student name: ";
                 std::cin >> name;
                 student.set_name(name);
-                std::cout << " password: ";
+
+                std::cout << "Password: ";
                 std::cin >> password;
                 student.set_password(password);
                 //student.edit_student(stud);
-                gd.students[student.get_id()] = student;
+                gd.students[student.get_id()].edit_student(student);
             }
+
             else if (student_ans != -1) {
-                std::cout << "\n ******************WRONG INPUT TRY AGAIN****************** \n ";
+                std::cout << "Error: Wrong input" << std::endl;
             }
-        } while (student_ans != -1);
 
-
+        } while (student_ans != 0);
     }
 
-    
-
-    else if (ans == -1) {
+    else if (ans == 0) {
         std::cout << "\n ******************Good bye****************** \n ";
         return 0;
     }
@@ -314,7 +318,6 @@ int main() {
         std::cout << "\n ******************WRONG INPUT TRY AGAIN****************** \n ";
         return 0;
     }
-
     // save changed data back to the database
     dbh.save_data_to_db(gd);
     // pause console
