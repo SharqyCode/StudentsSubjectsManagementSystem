@@ -196,7 +196,7 @@ namespace StudentSubjectsManagementSystem {
 
 	}
 private: System::Void Student_B_Click(System::Object^ sender, System::EventArgs^ e) {
-	StudentLogin obj;
+	StudentLogin obj(gd);
 	this->Hide();// hide home page
 	obj.ShowDialog();// open login form
 }

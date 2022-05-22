@@ -1,5 +1,9 @@
 #pragma once
-#include "StudentPortal.h" 
+#include "StudentPortal.h" ;
+#include"../StudentSubjectsManagementSystem/Student/Student.h" ;
+#include"../StudentSubjectsManagementSystem/Database/GlobalData.h";
+#include<msclr/marshal_cppstd.h>
+#include<string>
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -15,8 +19,11 @@ namespace StudentSubjectsManagementSystem {
 	public ref class StudentLogin : public System::Windows::Forms::Form
 	{
 	public:
-		StudentLogin(void)
+		Student* student;
+		GlobalData* gd;
+		StudentLogin(GlobalData * obj)
 		{
+			gd = obj;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -215,9 +222,25 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Void Login_B_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		//UserName_In->Text == "student" && Password_In->Text == "password"
-		if (true) {
+		msclr::interop::marshal_context context;
+		std::string name = context.marshal_as<std::string>(UserName_In->Text);
+		std::string password = context.marshal_as<std::string>(Password_In->Text);
+		std::unordered_map<std::string , Student>::iterator it;
+		bool fnd = 0;
+		for (it = gd->students.begin(); it != gd->students.end(); it++) {
+			//admin = it->second;
+			//admin.gd = &gd;
+			if ((it->second.get_name() == name) && (it->second.get_password() == password)) {
+
+				fnd = 1;
+				student = &(it->second);
+				student->gd = gd;
+				break;
+			}
+		}
+		if (fnd) {
 			//MessageBox::Show("Access Granted", "Signed in Successfuly", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			StudentPortal obj;
+			StudentPortal obj(student);
 			this->Hide();// hide home page
 			obj.ShowDialog();// open login form
 		}

@@ -1,7 +1,7 @@
 #pragma once
 #include"Modify.h"
 #include"Courses.h"
-
+#include"../StudentSubjectsManagementSystem/Student/Student.h"
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -18,6 +18,7 @@ namespace StudentSubjectsManagementSystem {
 	{
 	public:
 		Form^ backform3;
+		Student* student;
 		studentData(void)
 		{
 			InitializeComponent();
@@ -25,8 +26,9 @@ namespace StudentSubjectsManagementSystem {
 			//TODO: Add the constructor code here
 			//
 		}
-		studentData(Form^ form) {
+		studentData(Form^ form , Student * obj) {
 			backform3 = form;
+			student = obj;
 			InitializeComponent();
 			//Hide Pannels
 		}
@@ -145,13 +147,13 @@ namespace StudentSubjectsManagementSystem {
 private: System::Void modify_B_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	this->Hide();
-	Modify^ obj = gcnew Modify(this);
+	Modify^ obj = gcnew Modify(this , student);
 	obj->ShowDialog();
 }
 private: System::Void courses_B_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	this->Hide();
-	Courses^ obj = gcnew Courses(this);
+	Courses^ obj = gcnew Courses(this , student);
 	obj->ShowDialog();
 }
 private: System::Void studentData_back_B_Click(System::Object^ sender, System::EventArgs^ e) {

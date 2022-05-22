@@ -134,6 +134,8 @@
     <ClCompile Include="StudentLogin.cpp" />
     <ClCompile Include="StudentPortal.cpp" />
     <ClCompile Include="Student\Student.cpp" />
+    <ClCompile Include="Student_Register.cpp" />
+    <ClCompile Include="Student_ViewAvailableCourses.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -189,6 +191,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Student\Student.h" />
+    <ClInclude Include="Student_Register.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Student_ViewAvailableCourses.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Object Include="Database\sqlite3.obj" />
@@ -245,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentPortal.resx">
       <DependentUpon>StudentPortal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student_Register.resx">
+      <DependentUpon>Student_Register.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student_ViewAvailableCourses.resx">
+      <DependentUpon>Student_ViewAvailableCourses.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -98,14 +98,12 @@ bool Student::enroll_course(Course new_course)
 	// make sure pre-requisite complete, not in finished.
 	std::cout << std::endl;
 	if (new_course.get_max_num_of_students() == 0) {
-		std::cout << "Room is full \ n ";
 		return false;
 	}
 	for (int i = 0; i < finished_courses.size(); i++)
 	{
 		if (new_course.get_code() == finished_courses[i].get_code())
 		{
-			std::cout << "Course already registered." << std::endl;
 			return false;
 		}
 	}
@@ -122,8 +120,6 @@ bool Student::enroll_course(Course new_course)
 			}
 		}
 		if (!found) {
-
-			std::cout << "Pre-requisites not completed." << std::endl;
 			return false;
 		}
 
@@ -131,7 +127,6 @@ bool Student::enroll_course(Course new_course)
 	courses_in_progress.push_back(new_course);
 	new_course.max_num_of_students--;
 	gd->courses[new_course.get_code()] = new_course;
-	std::cout << "Course added succsessfully" << std::endl;
 	this->changed = true;
 	gd->students[id] = *(this);
 	return true;

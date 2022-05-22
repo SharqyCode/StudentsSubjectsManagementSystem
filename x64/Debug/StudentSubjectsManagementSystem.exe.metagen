@@ -13,6 +13,8 @@
   StudentSubjectsManagementSystem.studentData.resources - Embedded, ContainedInManifestFile, 
   StudentSubjectsManagementSystem.StudentLogin.resources - Embedded, ContainedInManifestFile, 
   StudentSubjectsManagementSystem.StudentPortal.resources - Embedded, ContainedInManifestFile, 
+  StudentSubjectsManagementSystem.Student_Register.resources - Embedded, ContainedInManifestFile, 
+  StudentSubjectsManagementSystem.Student_ViewAvailableCourses.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly StudentSubjectsManagementSystem, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
@@ -86,28 +88,48 @@ Class StudentSubjectsManagementSystem.AdminLogin: AutoLayout, AnsiClass, Class, 
     Admin* admin : Public
 Class StudentSubjectsManagementSystem.Courses: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Windows.Forms.Form, Student*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     System.Windows.Forms.Form backform4 : Public
+    Student* student : Public
 Class StudentSubjectsManagementSystem.Modify: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Windows.Forms.Form, Student*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
+    Student* student : Public
     System.Windows.Forms.Form backform5 : Public
 Class StudentSubjectsManagementSystem.studentData: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Windows.Forms.Form, Student*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     System.Windows.Forms.Form backform3 : Public
+    Student* student : Public
+Class StudentSubjectsManagementSystem.Student_Register: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, Student*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Student* student : Public
+    System.Windows.Forms.Form back : Public
+Class StudentSubjectsManagementSystem.Student_ViewAvailableCourses: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, Student*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Form back : Public
+    Student* student : Public
 Class StudentSubjectsManagementSystem.StudentPortal: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Student*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Student* student : Public
 Class StudentSubjectsManagementSystem.StudentLogin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(GlobalData*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Student* student : Public
+    GlobalData* gd : Public
 Class StudentSubjectsManagementSystem.Home: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(GlobalData*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

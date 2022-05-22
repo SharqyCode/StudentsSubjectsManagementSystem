@@ -1,5 +1,7 @@
 #pragma once
-
+#include"../StudentSubjectsManagementSystem/Student/Student.h"
+#include<msclr/marshal_cppstd.h>
+#include<string>
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -16,6 +18,7 @@ namespace StudentSubjectsManagementSystem {
 	{
 	public:
 		Form^ backform4;
+		Student* student;
 		Courses(void)
 		{
 			InitializeComponent();
@@ -23,8 +26,9 @@ namespace StudentSubjectsManagementSystem {
 			//TODO: Add the constructor code here
 			//
 		}
-		Courses(Form^ form) {
+		Courses(Form^ form , Student * obj ) {
 			backform4 = form;
+			student = obj;
 			InitializeComponent();
 		}
 
@@ -141,5 +145,13 @@ namespace StudentSubjectsManagementSystem {
 		this->Hide();
 		backform4->Show();
 	}
+		   /*To do:
+		   * Add the tool box that you will display in 
+		   * then you have 2 vectors 
+		 {
+		student->finished_courses;
+		student->courses_in_progress;}
+		   all you have to do is loop on them to display
+		   */
 };
 }
