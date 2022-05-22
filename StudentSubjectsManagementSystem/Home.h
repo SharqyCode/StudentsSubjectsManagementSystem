@@ -1,6 +1,7 @@
 #pragma once
 #include "AdminLogin.h" ;
 #include "StudentLogin.h" ;
+class GlobalData;
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -16,8 +17,10 @@ namespace StudentSubjectsManagementSystem {
 	public ref class Home : public System::Windows::Forms::Form
 	{
 	public:
-		Home(void)
+		GlobalData* gd;
+		Home(GlobalData * obj)
 		{
+			gd = obj;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -187,7 +190,7 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Void Home_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void Admin_B_Click(System::Object^ sender, System::EventArgs^ e) {
-		AdminLogin obj;
+		AdminLogin obj(gd);
 		this->Hide();// hide home page
 		obj.ShowDialog();// open login form
 

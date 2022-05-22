@@ -1,6 +1,7 @@
 #pragma once
 #include "AdminP_Student.h"
 #include "AdminP_Course.h"
+#include"..\StudentSubjectsManagementSystem\Admin\Admin.h";
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -16,8 +17,10 @@ namespace StudentSubjectsManagementSystem {
 	public ref class AdminPanel : public System::Windows::Forms::Form
 	{
 	public:
-		AdminPanel(void)
+		Admin* admin;
+		AdminPanel(Admin * obj)
 		{
+			admin = obj;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -149,7 +152,7 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Void Student_P_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		this->Hide();
-		AdminP_Student^ obj = gcnew AdminP_Student(this);
+		AdminP_Student^ obj = gcnew AdminP_Student(this , admin);
 		obj->ShowDialog();
 	}
 	private: System::Void Exit_B_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -159,7 +162,7 @@ namespace StudentSubjectsManagementSystem {
 private: System::Void Courses_P_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	this->Hide();
-	AdminP_Course^ obj2 = gcnew AdminP_Course(this);
+	AdminP_Course^ obj2 = gcnew AdminP_Course(this , admin);
 	obj2->ShowDialog();
 }
 	   bool dragging;

@@ -30,10 +30,11 @@ public:
 	bool login(std::string, std::string);
 	// students
 	void add_student(Student);
-	void list_students_for_course(Course);
+	std:: queue<Student> list_students_for_course(Course);
 	// courses
 	void add_course(Course);
-	bool set_course_prerequisites(Course);
+	//bool set_course_prerequisites(Course);
+	void set_course_prerequisites(int, int, int , int);
 	void list_courses_for_student(Student);
 	void edit_course(Course);
 };

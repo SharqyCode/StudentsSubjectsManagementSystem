@@ -1,5 +1,9 @@
 #pragma once
 #include "AdminPanel.h" ;
+#include<msclr/marshal_cppstd.h>
+#include<string>
+#include"../StudentSubjectsManagementSystem/Database/GlobalData.h";
+#include"../StudentSubjectsManagementSystem/Admin/Admin.h";
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -15,8 +19,11 @@ namespace StudentSubjectsManagementSystem {
 	public ref class AdminLogin : public System::Windows::Forms::Form
 	{
 	public:
-		AdminLogin(void)
+		GlobalData* gd;
+		Admin* admin;
+		AdminLogin(GlobalData * obj)
 		{
+			gd = obj;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -228,11 +235,27 @@ namespace StudentSubjectsManagementSystem {
 	}
 
 	private: System::Void Login_B_Click(System::Object^ sender, System::EventArgs^ e) {
-		AdminPanel obj;
 		//UserName_In->Text == " " && Password_In->Text == " "
-		if (true) {
+		msclr::interop::marshal_context context;
+		std::string name = context.marshal_as<std::string>(UserName_In->Text);
+		std::string password = context.marshal_as<std::string>(Password_In->Text);
+		std::unordered_map<int, Admin>::iterator it;
+		bool fnd = 0;
+		for (it = gd->admin.begin(); it != gd->admin.end(); it++) {
+			//admin = it->second;
+			//admin.gd = &gd;
+			if ((it->second.get_name() == name) && (it->second.get_password() == password)) {
+
+				fnd = 1;
+				admin = &(it->second);
+				admin->gd = gd;
+				break;
+			}
+		}
+		if (fnd ==1) {
 			//MessageBox::Show("Access Granted", "Signed in Successfuly", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		
+
+			AdminPanel obj(admin);
 			this->Hide();// hide home page
 			obj.ShowDialog();// open login form
 		}

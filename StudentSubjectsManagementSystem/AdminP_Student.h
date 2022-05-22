@@ -1,5 +1,7 @@
 #pragma once
 #include"Admin_studentSearch.h"
+#include<msclr\marshal_cppstd.h>;
+#include "..\StudentSubjectsManagementSystem\Admin\Admin.h"
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -16,6 +18,7 @@ namespace StudentSubjectsManagementSystem {
 	{
 	public:
 		Form^ backform;
+		Admin* admin;
 		AdminP_Student(void)
 		{
 			InitializeComponent();
@@ -23,13 +26,13 @@ namespace StudentSubjectsManagementSystem {
 			//TODO: Add the constructor code here
 			//
 		}
-		AdminP_Student(Form^ form)
+		AdminP_Student(Form^ form , Admin * obj)
 		{
+			admin = obj;
 			backform = form;
 			InitializeComponent();
 			//Hide Pannels
 			Add_Student_panel->Hide();
-			Delete_Student_panel->Hide();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -49,13 +52,13 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Windows::Forms::PictureBox^ Add_B;
 	private: System::Windows::Forms::PictureBox^ Search_B;
 	private: System::Windows::Forms::PictureBox^ close;
-	private: System::Windows::Forms::PictureBox^ Delet_B;
-	private: System::Windows::Forms::Panel^ Delete_Student_panel;
-	private: System::Windows::Forms::TextBox^ ID_Delete_textBox;
-	private: System::Windows::Forms::PictureBox^ Delete_Student_B;
 
 
-	private: System::Windows::Forms::PictureBox^ delete_back_B;
+
+
+
+
+
 
 
 
@@ -92,7 +95,6 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Windows::Forms::Label^ NAME_label;
 
 	private: System::Windows::Forms::ToolTip^ add_studentent_toolTip;
-	private: System::Windows::Forms::ToolTip^ delete_student_toolTip;
 	private: System::Windows::Forms::ToolTip^ search_student_toolTip;
 
 	private: System::ComponentModel::IContainer^ components;
@@ -118,11 +120,6 @@ namespace StudentSubjectsManagementSystem {
 			this->Add_B = (gcnew System::Windows::Forms::PictureBox());
 			this->Search_B = (gcnew System::Windows::Forms::PictureBox());
 			this->close = (gcnew System::Windows::Forms::PictureBox());
-			this->Delet_B = (gcnew System::Windows::Forms::PictureBox());
-			this->Delete_Student_panel = (gcnew System::Windows::Forms::Panel());
-			this->delete_back_B = (gcnew System::Windows::Forms::PictureBox());
-			this->ID_Delete_textBox = (gcnew System::Windows::Forms::TextBox());
-			this->Delete_Student_B = (gcnew System::Windows::Forms::PictureBox());
 			this->Add_Student_panel = (gcnew System::Windows::Forms::Panel());
 			this->add_Back_B = (gcnew System::Windows::Forms::PictureBox());
 			this->OK_AS_B = (gcnew System::Windows::Forms::Button());
@@ -151,16 +148,11 @@ namespace StudentSubjectsManagementSystem {
 			this->Student_Name = (gcnew System::Windows::Forms::TextBox());
 			this->NAME_label = (gcnew System::Windows::Forms::Label());
 			this->add_studentent_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
-			this->delete_student_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->search_student_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Back_B))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Add_B))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Search_B))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->close))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Delet_B))->BeginInit();
-			this->Delete_Student_panel->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->delete_back_B))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Delete_Student_B))->BeginInit();
 			this->Add_Student_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->add_Back_B))->BeginInit();
 			this->password_panel->SuspendLayout();
@@ -174,10 +166,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Back_B->BackColor = System::Drawing::Color::Transparent;
 			this->Back_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Back_B.Image")));
-			this->Back_B->Location = System::Drawing::Point(1, 10);
-			this->Back_B->Margin = System::Windows::Forms::Padding(2);
+			this->Back_B->Location = System::Drawing::Point(1, 12);
+			this->Back_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Back_B->Name = L"Back_B";
-			this->Back_B->Size = System::Drawing::Size(38, 46);
+			this->Back_B->Size = System::Drawing::Size(51, 57);
 			this->Back_B->TabIndex = 0;
 			this->Back_B->TabStop = false;
 			this->Back_B->Click += gcnew System::EventHandler(this, &AdminP_Student::Back_B_Click);
@@ -187,10 +179,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Add_B->BackColor = System::Drawing::Color::Transparent;
 			this->Add_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Add_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Add_B.Image")));
-			this->Add_B->Location = System::Drawing::Point(40, 179);
-			this->Add_B->Margin = System::Windows::Forms::Padding(2);
+			this->Add_B->Location = System::Drawing::Point(85, 220);
+			this->Add_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Add_B->Name = L"Add_B";
-			this->Add_B->Size = System::Drawing::Size(129, 115);
+			this->Add_B->Size = System::Drawing::Size(172, 142);
 			this->Add_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Add_B->TabIndex = 1;
 			this->Add_B->TabStop = false;
@@ -202,10 +194,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Search_B->BackColor = System::Drawing::Color::Transparent;
 			this->Search_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Search_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Search_B.Image")));
-			this->Search_B->Location = System::Drawing::Point(379, 179);
-			this->Search_B->Margin = System::Windows::Forms::Padding(2);
+			this->Search_B->Location = System::Drawing::Point(465, 220);
+			this->Search_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Search_B->Name = L"Search_B";
-			this->Search_B->Size = System::Drawing::Size(129, 115);
+			this->Search_B->Size = System::Drawing::Size(172, 142);
 			this->Search_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Search_B->TabIndex = 3;
 			this->Search_B->TabStop = false;
@@ -218,76 +210,13 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(194)));
 			this->close->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->close->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"close.Image")));
-			this->close->Location = System::Drawing::Point(507, 10);
-			this->close->Margin = System::Windows::Forms::Padding(2);
+			this->close->Location = System::Drawing::Point(676, 12);
+			this->close->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->close->Name = L"close";
-			this->close->Size = System::Drawing::Size(37, 42);
+			this->close->Size = System::Drawing::Size(49, 52);
 			this->close->TabIndex = 9;
 			this->close->TabStop = false;
 			this->close->Click += gcnew System::EventHandler(this, &AdminP_Student::close_Click);
-			// 
-			// Delet_B
-			// 
-			this->Delet_B->BackColor = System::Drawing::Color::Transparent;
-			this->Delet_B->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Delet_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Delet_B.Image")));
-			this->Delet_B->Location = System::Drawing::Point(214, 179);
-			this->Delet_B->Margin = System::Windows::Forms::Padding(2);
-			this->Delet_B->Name = L"Delet_B";
-			this->Delet_B->Size = System::Drawing::Size(129, 115);
-			this->Delet_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->Delet_B->TabIndex = 2;
-			this->Delet_B->TabStop = false;
-			this->Delet_B->Click += gcnew System::EventHandler(this, &AdminP_Student::Delet_B_Click);
-			this->Delet_B->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AdminP_Student::Delet_B_MouseMove);
-			// 
-			// Delete_Student_panel
-			// 
-			this->Delete_Student_panel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Delete_Student_panel.BackgroundImage")));
-			this->Delete_Student_panel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Delete_Student_panel->Controls->Add(this->delete_back_B);
-			this->Delete_Student_panel->Controls->Add(this->ID_Delete_textBox);
-			this->Delete_Student_panel->Controls->Add(this->Delete_Student_B);
-			this->Delete_Student_panel->Location = System::Drawing::Point(1, 0);
-			this->Delete_Student_panel->Name = L"Delete_Student_panel";
-			this->Delete_Student_panel->Size = System::Drawing::Size(557, 419);
-			this->Delete_Student_panel->TabIndex = 11;
-			this->Delete_Student_panel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &AdminP_Student::Delete_Student_panel_Paint);
-			// 
-			// delete_back_B
-			// 
-			this->delete_back_B->BackColor = System::Drawing::Color::Transparent;
-			this->delete_back_B->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->delete_back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"delete_back_B.Image")));
-			this->delete_back_B->Location = System::Drawing::Point(0, 2);
-			this->delete_back_B->Margin = System::Windows::Forms::Padding(2);
-			this->delete_back_B->Name = L"delete_back_B";
-			this->delete_back_B->Size = System::Drawing::Size(38, 46);
-			this->delete_back_B->TabIndex = 28;
-			this->delete_back_B->TabStop = false;
-			this->delete_back_B->Click += gcnew System::EventHandler(this, &AdminP_Student::delete_back_B_Click);
-			// 
-			// ID_Delete_textBox
-			// 
-			this->ID_Delete_textBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)),
-				static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(194)));
-			this->ID_Delete_textBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->ID_Delete_textBox->Location = System::Drawing::Point(63, 144);
-			this->ID_Delete_textBox->Name = L"ID_Delete_textBox";
-			this->ID_Delete_textBox->Size = System::Drawing::Size(193, 13);
-			this->ID_Delete_textBox->TabIndex = 1;
-			this->ID_Delete_textBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AdminP_Student::ID_Delete_textBox_KeyDown);
-			// 
-			// Delete_Student_B
-			// 
-			this->Delete_Student_B->BackColor = System::Drawing::Color::Transparent;
-			this->Delete_Student_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Delete_Student_B.Image")));
-			this->Delete_Student_B->Location = System::Drawing::Point(3, 53);
-			this->Delete_Student_B->Name = L"Delete_Student_B";
-			this->Delete_Student_B->Size = System::Drawing::Size(339, 304);
-			this->Delete_Student_B->TabIndex = 0;
-			this->Delete_Student_B->TabStop = false;
-			this->Delete_Student_B->Click += gcnew System::EventHandler(this, &AdminP_Student::Delete_Student_B_Click);
 			// 
 			// Add_Student_panel
 			// 
@@ -308,9 +237,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Add_Student_panel->Controls->Add(this->ID_label);
 			this->Add_Student_panel->Controls->Add(this->Student_Name);
 			this->Add_Student_panel->Controls->Add(this->NAME_label);
-			this->Add_Student_panel->Location = System::Drawing::Point(1, 0);
+			this->Add_Student_panel->Location = System::Drawing::Point(1, 1);
+			this->Add_Student_panel->Margin = System::Windows::Forms::Padding(4);
 			this->Add_Student_panel->Name = L"Add_Student_panel";
-			this->Add_Student_panel->Size = System::Drawing::Size(557, 419);
+			this->Add_Student_panel->Size = System::Drawing::Size(743, 516);
 			this->Add_Student_panel->TabIndex = 14;
 			// 
 			// add_Back_B
@@ -319,9 +249,9 @@ namespace StudentSubjectsManagementSystem {
 			this->add_Back_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->add_Back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"add_Back_B.Image")));
 			this->add_Back_B->Location = System::Drawing::Point(0, 2);
-			this->add_Back_B->Margin = System::Windows::Forms::Padding(2);
+			this->add_Back_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->add_Back_B->Name = L"add_Back_B";
-			this->add_Back_B->Size = System::Drawing::Size(38, 46);
+			this->add_Back_B->Size = System::Drawing::Size(51, 57);
 			this->add_Back_B->TabIndex = 27;
 			this->add_Back_B->TabStop = false;
 			this->add_Back_B->Click += gcnew System::EventHandler(this, &AdminP_Student::add_Back_B_Click);
@@ -334,10 +264,10 @@ namespace StudentSubjectsManagementSystem {
 			this->OK_AS_B->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->OK_AS_B->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->OK_AS_B->Location = System::Drawing::Point(169, 329);
-			this->OK_AS_B->Margin = System::Windows::Forms::Padding(2);
+			this->OK_AS_B->Location = System::Drawing::Point(225, 405);
+			this->OK_AS_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->OK_AS_B->Name = L"OK_AS_B";
-			this->OK_AS_B->Size = System::Drawing::Size(58, 26);
+			this->OK_AS_B->Size = System::Drawing::Size(77, 32);
 			this->OK_AS_B->TabIndex = 25;
 			this->OK_AS_B->Text = L"Add";
 			this->OK_AS_B->UseVisualStyleBackColor = false;
@@ -352,9 +282,10 @@ namespace StudentSubjectsManagementSystem {
 			this->password_panel->Controls->Add(this->label6);
 			this->password_panel->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->password_panel->Location = System::Drawing::Point(58, 317);
+			this->password_panel->Location = System::Drawing::Point(77, 390);
+			this->password_panel->Margin = System::Windows::Forms::Padding(4);
 			this->password_panel->Name = L"password_panel";
-			this->password_panel->Size = System::Drawing::Size(170, 2);
+			this->password_panel->Size = System::Drawing::Size(227, 2);
 			this->password_panel->TabIndex = 24;
 			// 
 			// panel7
@@ -363,9 +294,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
 			this->panel7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->panel7->Location = System::Drawing::Point(1, 20);
+			this->panel7->Location = System::Drawing::Point(1, 25);
+			this->panel7->Margin = System::Windows::Forms::Padding(4);
 			this->panel7->Name = L"panel7";
-			this->panel7->Size = System::Drawing::Size(170, 2);
+			this->panel7->Size = System::Drawing::Size(227, 2);
 			this->panel7->TabIndex = 15;
 			// 
 			// textBox6
@@ -376,9 +308,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->textBox6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->textBox6->Location = System::Drawing::Point(1, 5);
+			this->textBox6->Location = System::Drawing::Point(1, 6);
+			this->textBox6->Margin = System::Windows::Forms::Padding(4);
 			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(170, 15);
+			this->textBox6->Size = System::Drawing::Size(227, 19);
 			this->textBox6->TabIndex = 14;
 			// 
 			// label6
@@ -387,9 +320,10 @@ namespace StudentSubjectsManagementSystem {
 			this->label6->BackColor = System::Drawing::Color::Transparent;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(-1, -19);
+			this->label6->Location = System::Drawing::Point(-1, -23);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(47, 17);
+			this->label6->Size = System::Drawing::Size(60, 23);
 			this->label6->TabIndex = 13;
 			this->label6->Text = L"Name";
 			// 
@@ -402,9 +336,10 @@ namespace StudentSubjectsManagementSystem {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->Password_textBox->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->Password_textBox->Location = System::Drawing::Point(58, 301);
+			this->Password_textBox->Location = System::Drawing::Point(77, 370);
+			this->Password_textBox->Margin = System::Windows::Forms::Padding(4);
 			this->Password_textBox->Name = L"Password_textBox";
-			this->Password_textBox->Size = System::Drawing::Size(170, 15);
+			this->Password_textBox->Size = System::Drawing::Size(227, 19);
 			this->Password_textBox->TabIndex = 23;
 			this->Password_textBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AdminP_Student::Password_textBox_KeyDown);
 			// 
@@ -417,9 +352,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Year_panel->Controls->Add(this->label4);
 			this->Year_panel->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->Year_panel->Location = System::Drawing::Point(59, 257);
+			this->Year_panel->Location = System::Drawing::Point(79, 316);
+			this->Year_panel->Margin = System::Windows::Forms::Padding(4);
 			this->Year_panel->Name = L"Year_panel";
-			this->Year_panel->Size = System::Drawing::Size(170, 2);
+			this->Year_panel->Size = System::Drawing::Size(227, 2);
 			this->Year_panel->TabIndex = 21;
 			// 
 			// panel5
@@ -428,9 +364,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
 			this->panel5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->panel5->Location = System::Drawing::Point(1, 20);
+			this->panel5->Location = System::Drawing::Point(1, 25);
+			this->panel5->Margin = System::Windows::Forms::Padding(4);
 			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(170, 2);
+			this->panel5->Size = System::Drawing::Size(227, 2);
 			this->panel5->TabIndex = 15;
 			// 
 			// textBox4
@@ -441,9 +378,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->textBox4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->textBox4->Location = System::Drawing::Point(1, 5);
+			this->textBox4->Location = System::Drawing::Point(1, 6);
+			this->textBox4->Margin = System::Windows::Forms::Padding(4);
 			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(170, 15);
+			this->textBox4->Size = System::Drawing::Size(227, 19);
 			this->textBox4->TabIndex = 14;
 			// 
 			// label4
@@ -452,9 +390,10 @@ namespace StudentSubjectsManagementSystem {
 			this->label4->BackColor = System::Drawing::Color::Transparent;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(-1, -19);
+			this->label4->Location = System::Drawing::Point(-1, -23);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(47, 17);
+			this->label4->Size = System::Drawing::Size(60, 23);
 			this->label4->TabIndex = 13;
 			this->label4->Text = L"Name";
 			// 
@@ -464,9 +403,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Password_label->BackColor = System::Drawing::Color::Transparent;
 			this->Password_label->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Password_label->Location = System::Drawing::Point(56, 278);
+			this->Password_label->Location = System::Drawing::Point(75, 342);
+			this->Password_label->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->Password_label->Name = L"Password_label";
-			this->Password_label->Size = System::Drawing::Size(72, 17);
+			this->Password_label->Size = System::Drawing::Size(89, 23);
 			this->Password_label->TabIndex = 22;
 			this->Password_label->Text = L"Password";
 			// 
@@ -479,9 +419,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->Year_textBox->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->Year_textBox->Location = System::Drawing::Point(59, 241);
+			this->Year_textBox->Location = System::Drawing::Point(79, 297);
+			this->Year_textBox->Margin = System::Windows::Forms::Padding(4);
 			this->Year_textBox->Name = L"Year_textBox";
-			this->Year_textBox->Size = System::Drawing::Size(170, 15);
+			this->Year_textBox->Size = System::Drawing::Size(227, 19);
 			this->Year_textBox->TabIndex = 20;
 			this->Year_textBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AdminP_Student::Year_textBox_KeyDown);
 			// 
@@ -494,9 +435,10 @@ namespace StudentSubjectsManagementSystem {
 			this->ID_panel->Controls->Add(this->label2);
 			this->ID_panel->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->ID_panel->Location = System::Drawing::Point(59, 202);
+			this->ID_panel->Location = System::Drawing::Point(79, 249);
+			this->ID_panel->Margin = System::Windows::Forms::Padding(4);
 			this->ID_panel->Name = L"ID_panel";
-			this->ID_panel->Size = System::Drawing::Size(170, 2);
+			this->ID_panel->Size = System::Drawing::Size(227, 2);
 			this->ID_panel->TabIndex = 18;
 			// 
 			// panel3
@@ -505,9 +447,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
 			this->panel3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->panel3->Location = System::Drawing::Point(1, 20);
+			this->panel3->Location = System::Drawing::Point(1, 25);
+			this->panel3->Margin = System::Windows::Forms::Padding(4);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(170, 2);
+			this->panel3->Size = System::Drawing::Size(227, 2);
 			this->panel3->TabIndex = 15;
 			// 
 			// textBox2
@@ -518,9 +461,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->textBox2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->textBox2->Location = System::Drawing::Point(1, 5);
+			this->textBox2->Location = System::Drawing::Point(1, 6);
+			this->textBox2->Margin = System::Windows::Forms::Padding(4);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(170, 15);
+			this->textBox2->Size = System::Drawing::Size(227, 19);
 			this->textBox2->TabIndex = 14;
 			// 
 			// label2
@@ -529,9 +473,10 @@ namespace StudentSubjectsManagementSystem {
 			this->label2->BackColor = System::Drawing::Color::Transparent;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(-1, -19);
+			this->label2->Location = System::Drawing::Point(-1, -23);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(47, 17);
+			this->label2->Size = System::Drawing::Size(60, 23);
 			this->label2->TabIndex = 13;
 			this->label2->Text = L"Name";
 			// 
@@ -541,9 +486,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Year_label->BackColor = System::Drawing::Color::Transparent;
 			this->Year_label->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Year_label->Location = System::Drawing::Point(57, 218);
+			this->Year_label->Location = System::Drawing::Point(76, 268);
+			this->Year_label->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->Year_label->Name = L"Year_label";
-			this->Year_label->Size = System::Drawing::Size(38, 17);
+			this->Year_label->Size = System::Drawing::Size(47, 23);
 			this->Year_label->TabIndex = 19;
 			this->Year_label->Text = L"Year";
 			// 
@@ -556,9 +502,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->ID_textBox->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->ID_textBox->Location = System::Drawing::Point(59, 186);
+			this->ID_textBox->Location = System::Drawing::Point(79, 229);
+			this->ID_textBox->Margin = System::Windows::Forms::Padding(4);
 			this->ID_textBox->Name = L"ID_textBox";
-			this->ID_textBox->Size = System::Drawing::Size(170, 15);
+			this->ID_textBox->Size = System::Drawing::Size(227, 19);
 			this->ID_textBox->TabIndex = 17;
 			this->ID_textBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AdminP_Student::ID_textBox_KeyDown);
 			// 
@@ -571,9 +518,10 @@ namespace StudentSubjectsManagementSystem {
 			this->Name_Panel->Controls->Add(this->label1);
 			this->Name_Panel->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->Name_Panel->Location = System::Drawing::Point(58, 155);
+			this->Name_Panel->Location = System::Drawing::Point(77, 191);
+			this->Name_Panel->Margin = System::Windows::Forms::Padding(4);
 			this->Name_Panel->Name = L"Name_Panel";
-			this->Name_Panel->Size = System::Drawing::Size(170, 2);
+			this->Name_Panel->Size = System::Drawing::Size(227, 2);
 			this->Name_Panel->TabIndex = 12;
 			// 
 			// panel1
@@ -582,9 +530,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
 			this->panel1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->panel1->Location = System::Drawing::Point(1, 20);
+			this->panel1->Location = System::Drawing::Point(1, 25);
+			this->panel1->Margin = System::Windows::Forms::Padding(4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(170, 2);
+			this->panel1->Size = System::Drawing::Size(227, 2);
 			this->panel1->TabIndex = 15;
 			// 
 			// textBox1
@@ -595,9 +544,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->textBox1->Location = System::Drawing::Point(1, 5);
+			this->textBox1->Location = System::Drawing::Point(1, 6);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(170, 15);
+			this->textBox1->Size = System::Drawing::Size(227, 19);
 			this->textBox1->TabIndex = 14;
 			// 
 			// label1
@@ -606,9 +556,10 @@ namespace StudentSubjectsManagementSystem {
 			this->label1->BackColor = System::Drawing::Color::Transparent;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(-1, -19);
+			this->label1->Location = System::Drawing::Point(-1, -23);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(47, 17);
+			this->label1->Size = System::Drawing::Size(60, 23);
 			this->label1->TabIndex = 13;
 			this->label1->Text = L"Name";
 			// 
@@ -618,9 +569,10 @@ namespace StudentSubjectsManagementSystem {
 			this->ID_label->BackColor = System::Drawing::Color::Transparent;
 			this->ID_label->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ID_label->Location = System::Drawing::Point(57, 163);
+			this->ID_label->Location = System::Drawing::Point(76, 201);
+			this->ID_label->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->ID_label->Name = L"ID_label";
-			this->ID_label->Size = System::Drawing::Size(22, 17);
+			this->ID_label->Size = System::Drawing::Size(29, 23);
 			this->ID_label->TabIndex = 16;
 			this->ID_label->Text = L"ID";
 			// 
@@ -633,9 +585,10 @@ namespace StudentSubjectsManagementSystem {
 				static_cast<System::Byte>(0)));
 			this->Student_Name->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(36)));
-			this->Student_Name->Location = System::Drawing::Point(58, 139);
+			this->Student_Name->Location = System::Drawing::Point(77, 171);
+			this->Student_Name->Margin = System::Windows::Forms::Padding(4);
 			this->Student_Name->Name = L"Student_Name";
-			this->Student_Name->Size = System::Drawing::Size(170, 15);
+			this->Student_Name->Size = System::Drawing::Size(227, 19);
 			this->Student_Name->TabIndex = 11;
 			this->Student_Name->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AdminP_Student::Student_Name_KeyDown);
 			// 
@@ -645,30 +598,29 @@ namespace StudentSubjectsManagementSystem {
 			this->NAME_label->BackColor = System::Drawing::Color::Transparent;
 			this->NAME_label->Font = (gcnew System::Drawing::Font(L"Segoe UI Historic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->NAME_label->Location = System::Drawing::Point(56, 116);
+			this->NAME_label->Location = System::Drawing::Point(75, 143);
+			this->NAME_label->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->NAME_label->Name = L"NAME_label";
-			this->NAME_label->Size = System::Drawing::Size(47, 17);
+			this->NAME_label->Size = System::Drawing::Size(60, 23);
 			this->NAME_label->TabIndex = 0;
 			this->NAME_label->Text = L"Name";
 			// 
 			// AdminP_Student
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(557, 419);
-			this->Controls->Add(this->Delete_Student_panel);
+			this->ClientSize = System::Drawing::Size(743, 516);
 			this->Controls->Add(this->Add_Student_panel);
 			this->Controls->Add(this->close);
 			this->Controls->Add(this->Search_B);
-			this->Controls->Add(this->Delet_B);
 			this->Controls->Add(this->Add_B);
 			this->Controls->Add(this->Back_B);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"AdminP_Student";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminP_Student";
@@ -680,11 +632,6 @@ namespace StudentSubjectsManagementSystem {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Add_B))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Search_B))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->close))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Delet_B))->EndInit();
-			this->Delete_Student_panel->ResumeLayout(false);
-			this->Delete_Student_panel->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->delete_back_B))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Delete_Student_B))->EndInit();
 			this->Add_Student_panel->ResumeLayout(false);
 			this->Add_Student_panel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->add_Back_B))->EndInit();
@@ -763,28 +710,21 @@ namespace StudentSubjectsManagementSystem {
 
 	private: System::Void OK_AS_B_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Code to add student to DB & DS
+		msclr::interop::marshal_context context;
+		std::string name = context.marshal_as<std::string>(Student_Name->Text);
+		std::string id = context.marshal_as<std::string>(ID_textBox->Text);
+		std::string password = context.marshal_as<std::string>(Password_textBox->Text);
+		std::string year = context.marshal_as<std::string>(Year_textBox->Text);
+			Student stud;
+			stud.set_name(name);
+			stud.set_password(password);
+			stud.set_id(id);
+			stud.set_academic_year(year);
+			admin->add_student(stud);
 		Add_Student_panel->Hide();
 	}
 	private: System::Void Add_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
 
-	private: System::Void ID_Delete_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		if (e->KeyValue == (int)Keys::Enter) {
-			//Add code to delete student
-
-			//COME BACK ONCE DONEWITH EVERYTHING
-			//Output warning message
-		   //DialogResult^ result;
-		   // MessageBox::Show("Are you sure you want to delete the Student with ID *****", "Delete Student",MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		}
-	}
-	private: System::Void Delete_Student_B_Click(System::Object^ sender, System::EventArgs^ e) {
-		//Connect to functionalities to delete student from database & dat structure used.
-	}
-	private: System::Void delete_back_B_Click(System::Object^ sender, System::EventArgs^ e) {
-		//this->Hide();
-		//backform->Show();
-		Delete_Student_panel->Hide();
 	}
 	private: System::Void add_Back_B_Click(System::Object^ sender, System::EventArgs^ e) {
 		//this->Hide();
@@ -795,20 +735,12 @@ namespace StudentSubjectsManagementSystem {
 		Add_Student_panel->Show();
 		//Add student in DS
 	}
-	private: System::Void Delet_B_Click(System::Object^ sender, System::EventArgs^ e) {
-		Delete_Student_panel->Show();
-	}
 	private: System::Void Search_B_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		Admin_studentSearch^ obj = gcnew Admin_studentSearch(this);
+		Admin_studentSearch^ obj = gcnew Admin_studentSearch(this , admin);
 		obj->ShowDialog();
 	}
 	private: System::Void Search_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void Delete_Student_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void delete_close_B_Click(System::Object^ sender, System::EventArgs^ e) {
-		Delete_Student_panel->Hide();
 	}
 	private: System::Void close_add_B_Click(System::Object^ sender, System::EventArgs^ e) {
 		Add_Student_panel->Hide();
@@ -822,10 +754,6 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Void Add_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 
 		add_studentent_toolTip->SetToolTip(Add_B, "Add a new student.");
-	}
-	private: System::Void Delet_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-
-		delete_student_toolTip->SetToolTip(Delet_B, "Delete a student.");
 	}
 	private: System::Void Search_B_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 

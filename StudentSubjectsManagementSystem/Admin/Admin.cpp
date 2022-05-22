@@ -65,7 +65,7 @@ void Admin::add_course(Course course)
 }
 
 // set pre-requisites for a course
-bool Admin::set_course_prerequisites(Course course)
+/*bool Admin::set_course_prerequisites(Course course)
 {
 	int cnt = 0;
 	std::cout << "How many courses to set: ";
@@ -99,9 +99,18 @@ bool Admin::set_course_prerequisites(Course course)
 	gd->courses[course.get_code()] = course;
 	return true;
 }
-
+*/
+void Admin::set_course_prerequisites(int  code1, int code2, int code3, int actual) {
+    
+	if(code1!=-1)
+	gd->courses[actual].prerequisites_courses.push_back(gd->courses[code1]);
+	if(code2!=-1)
+	gd->courses[actual].prerequisites_courses.push_back(gd->courses[code2]);
+	if(code3!=-1)
+	gd->courses[actual].prerequisites_courses.push_back(gd->courses[code3]);
+}
 // displays all students enrolld in a course
-void Admin::list_students_for_course(Course course)
+/*void Admin::list_students_for_course(Course course)
 {
 	std::queue<Student> studs_enrolled;
 	std::unordered_map<std::string, Student> ::iterator it;
@@ -120,6 +129,21 @@ void Admin::list_students_for_course(Course course)
 		std::cout << studs_enrolled.front().get_name() << std::endl;
 		studs_enrolled.pop();
 	}
+}*/
+std::queue<Student> Admin::list_students_for_course(Course course) {
+
+	std::queue<Student> studs_enrolled;
+	std::unordered_map<std::string, Student> ::iterator it;
+	for (it = gd->students.begin(); it != gd->students.end(); it++) {
+		std::vector<Course> courses = it->second.get_courses_in_progress();
+		for (int j = 0; j < courses.size(); j++) {
+			if (courses[j].get_name() == course.get_name()) {
+				studs_enrolled.push(it->second);
+				break;
+			}
+		}
+	}
+	return studs_enrolled;
 }
 // display all courses of a student
 void Admin::list_courses_for_student(Student student)
@@ -132,10 +156,11 @@ void Admin::list_courses_for_student(Student student)
 	std::cout << "In-progress courses: \n";
 	for (int i = 0; i < student.courses_in_progress.size(); i++)
 		std::cout << student.courses_in_progress[i].get_name() << std::endl;
+
 }
 
 // edit course data
-void Admin::edit_course(Course course)
+/*void Admin::edit_course(Course course)
 {
 	std::string name;
 	int code, hours, max_number_of_students;
@@ -157,4 +182,7 @@ void Admin::edit_course(Course course)
 	std::cout << "Max number of students: ";
 	std::cin >> max_number_of_students;
 	course.set_max_num_of_students(max_number_of_students);
+}*/
+void Admin::edit_course(Course course) {
+	gd->courses[course.get_code()] = course;
 }

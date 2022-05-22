@@ -90,7 +90,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,9 +118,13 @@
     <ClCompile Include="AdminP_Course.cpp" />
     <ClCompile Include="AdminP_Student.cpp" />
     <ClCompile Include="Admin\Admin.cpp" />
+    <ClCompile Include="Admin_AddCourse.cpp" />
+    <ClCompile Include="Admin_courseSearch.cpp" />
     <ClCompile Include="Admin_studentSearch.cpp" />
     <ClCompile Include="Courses.cpp" />
     <ClCompile Include="Course\Course.cpp" />
+    <ClCompile Include="Course_Modify.cpp" />
+    <ClCompile Include="Course_Prerequisites.cpp" />
     <ClCompile Include="Database\DatabaseHandler.cpp" />
     <ClCompile Include="Database\GlobalData.cpp" />
     <ClCompile Include="Home.cpp" />
@@ -148,6 +152,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Admin\Admin.h" />
+    <ClInclude Include="Admin_AddCourse.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Admin_courseSearch.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Admin_studentSearch.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -155,6 +165,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Course\Course.h" />
+    <ClInclude Include="Course_Modify.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Course_Prerequisites.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Database\DatabaseHandler.h" />
     <ClInclude Include="Database\GlobalData.h" />
     <ClInclude Include="Home.h">
@@ -197,11 +213,23 @@
     <EmbeddedResource Include="AdminP_Student.resx">
       <DependentUpon>AdminP_Student.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin_AddCourse.resx">
+      <DependentUpon>Admin_AddCourse.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_courseSearch.resx">
+      <DependentUpon>Admin_courseSearch.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin_studentSearch.resx">
       <DependentUpon>Admin_studentSearch.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Courses.resx">
       <DependentUpon>Courses.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course_Modify.resx">
+      <DependentUpon>Course_Modify.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course_Prerequisites.resx">
+      <DependentUpon>Course_Prerequisites.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.h</DependentUpon>

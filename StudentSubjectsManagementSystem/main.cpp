@@ -1,14 +1,12 @@
 #include <iostream>
 #include "Database/DatabaseHandler.h"
 #include "Database/GlobalData.h"
+#include "../StudentSubjectsManagementSystem/AdminLogin.h"
 #include<windows.h>
 #include "Home.h"
 using namespace StudentSubjectsManagementSystem;
-/*int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-    Application::EnableVisualStyles();
-    Application::SetCompatibleTextRenderingDefault(false);
-    Application::Run(gcnew Home());  std::cout << "Initializing DB\n";
     DatabaseHandler dbh;
     // create db
     dbh.create_db();
@@ -21,25 +19,17 @@ using namespace StudentSubjectsManagementSystem;
     dbh.load_admin_in_memory(gd.admin);
     dbh.load_students_in_memory(gd.students);
     dbh.load_courses_in_memory(gd.courses);
-    // print to console
-    for (auto& admin : gd.admin) {
-        std::cout << "Info: Loaded from in memory hashtables, admin: " << admin.second.get_name() << std::endl;
-    }
-    for (auto& x : gd.students) {
-        std::cout << "Info: Loaded from in memory hashtables, student: " << x.second.get_name() << std::endl;
-        std::cout << "Info: Loaded from in memory hashtables, number of finished courses: " << x.second.finished_courses.size() << std::endl;
-    }
-    for (auto& course : gd.courses) {
-        std::cout << "Info: Loaded from in memory hashtables, course: " << course.second.get_name() << std::endl;
-    }
+    Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    Application::Run(gcnew Home(&gd));  std::cout << "Initializing DB\n";
     // save changed data back to the database
     dbh.save_data_to_db(gd);
     // pause console
     std::string pause;
     std::cin >> pause;
     return 0;
-}*/
-int main() {
+}
+/*int main() {
     DatabaseHandler dbh;
     // create db
     dbh.create_db();
@@ -52,6 +42,7 @@ int main() {
     dbh.load_admin_in_memory(gd.admin);
     dbh.load_students_in_memory(gd.students);
     dbh.load_courses_in_memory(gd.courses);
+    AdminLogin admin;
     // print to console
   /* for (auto& admin : gd.admin) {
         std::cout << "Info: Loaded from in memory hashtables, admin: " << admin.second.get_name() << std::endl;
@@ -62,7 +53,7 @@ int main() {
     }
     for (auto& course : gd.courses) {
         std::cout << "Info: Loaded from in memory hashtables, course: " << course.second.get_name() << std::endl;
-    }*/
+    }
    // std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n**************************************Student Subject Management System**************************************\n";
     int ans;
@@ -95,12 +86,12 @@ int main() {
                 break;
             }
             //std::cout << it->second.get_name();
-            /*if (it->second.get_name() == name) {
+            if (it->second.get_name() == name) {
                 fnd = 1;
                 admin = it->second;
                 std::cout << "***********************hi**********************\n";
                 break;
-            }*/
+            }
        
 
         }
@@ -324,4 +315,4 @@ int main() {
     std::string pause;
     std::cin >> pause;
     return 0;
-}
+}*/
