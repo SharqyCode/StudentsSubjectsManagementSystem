@@ -2,6 +2,8 @@
 #include<msclr/marshal_cppstd.h>;
 #include<string>;
 #include"..\StudentSubjectsManagementSystem\\Admin\Admin.h";
+
+#include "Student/Student.h"
 namespace StudentSubjectsManagementSystem {
 
 	using namespace System;
@@ -10,6 +12,8 @@ namespace StudentSubjectsManagementSystem {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace msclr::interop;
+
 
 	/// <summary>
 	/// Summary for Admin_studentSearch
@@ -18,6 +22,8 @@ namespace StudentSubjectsManagementSystem {
 	{
 	public:
 		Form^ search;
+	private: System::Windows::Forms::ListView^ resultStudentSearch;
+	public:
 		Admin* admin;
 		Admin_studentSearch(void)
 		{
@@ -26,14 +32,22 @@ namespace StudentSubjectsManagementSystem {
 			//TODO: Add the constructor code here
 			//
 		}
-		Admin_studentSearch(Form^ form , Admin * obj)
+		Admin_studentSearch(Form^ form, Admin* obj)
 		{
 			search = form;
 			admin = obj;
 			InitializeComponent();
+
+			resultStudentSearch->View = View::Details;
+			resultStudentSearch->Columns->Add("Name", 180);
+			resultStudentSearch->Columns->Add("Finished");
+			resultStudentSearch->Columns->Add("Inprogress");
+
 			//
 			//TODO: Add the constructor code here
-			//
+		//
+		//TODO: Add the constructor code here
+		//
 		}
 
 	protected:
@@ -55,7 +69,7 @@ namespace StudentSubjectsManagementSystem {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -67,17 +81,19 @@ namespace StudentSubjectsManagementSystem {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Admin_studentSearch::typeid));
 			this->search_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->search_back_B = (gcnew System::Windows::Forms::PictureBox());
+			this->resultStudentSearch = (gcnew System::Windows::Forms::ListView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->search_back_B))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// search_textBox
 			// 
 			this->search_textBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->search_textBox->Location = System::Drawing::Point(417, 160);
+			this->search_textBox->Location = System::Drawing::Point(365, 160);
 			this->search_textBox->Margin = System::Windows::Forms::Padding(4);
 			this->search_textBox->Name = L"search_textBox";
-			this->search_textBox->Size = System::Drawing::Size(182, 15);
+			this->search_textBox->Size = System::Drawing::Size(159, 17);
 			this->search_textBox->TabIndex = 0;
+			this->search_textBox->TextChanged += gcnew System::EventHandler(this, &Admin_studentSearch::search_textBox_TextChanged);
 			this->search_textBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Admin_studentSearch::search_textBox_KeyDown);
 			// 
 			// search_back_B
@@ -87,18 +103,28 @@ namespace StudentSubjectsManagementSystem {
 			this->search_back_B->Location = System::Drawing::Point(0, -1);
 			this->search_back_B->Margin = System::Windows::Forms::Padding(4);
 			this->search_back_B->Name = L"search_back_B";
-			this->search_back_B->Size = System::Drawing::Size(63, 62);
+			this->search_back_B->Size = System::Drawing::Size(55, 62);
 			this->search_back_B->TabIndex = 1;
 			this->search_back_B->TabStop = false;
 			this->search_back_B->Click += gcnew System::EventHandler(this, &Admin_studentSearch::search_back_B_Click);
 			// 
+			// resultStudentSearch
+			// 
+			this->resultStudentSearch->HideSelection = false;
+			this->resultStudentSearch->Location = System::Drawing::Point(26, 89);
+			this->resultStudentSearch->Name = L"resultStudentSearch";
+			this->resultStudentSearch->Size = System::Drawing::Size(320, 307);
+			this->resultStudentSearch->TabIndex = 2;
+			this->resultStudentSearch->UseCompatibleStateImageBehavior = false;
+			// 
 			// Admin_studentSearch
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(653, 473);
+			this->ClientSize = System::Drawing::Size(571, 473);
+			this->Controls->Add(this->resultStudentSearch);
 			this->Controls->Add(this->search_back_B);
 			this->Controls->Add(this->search_textBox);
 			this->DoubleBuffered = true;
@@ -117,12 +143,12 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Void search_back_B_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
 		search->Show();
-		
+
 	}
 
 	private: System::Void search_textBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		msclr::interop::marshal_context context;
-		std::string id  = context.marshal_as<std::string>(search_textBox->Text);
+		std::string id = context.marshal_as<std::string>(search_textBox->Text);
 		std::unordered_map<std::string, Student>  ::iterator it;
 		Student student;
 		for (it = admin->gd->students.begin(); it != admin->gd->students.end(); it++) {
@@ -133,13 +159,49 @@ namespace StudentSubjectsManagementSystem {
 		}
 
 		/*To do :
-		    now you have object student from which you can get the finshed courses and course in proggress
+			now you have object student from which you can get the finshed courses and course in proggress
 			keep in mind both are vectors of courses:
 			student.finished_courses;
 			student.courses_in_progress;
-	        all you have to do is display them
-		
+			all you have to do is display them
+
 		*/
 	}
-};
+
+	private: System::Void search_textBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+		std::string input = marshal_as<std::string>(search_textBox->Text);
+		resultStudentSearch->Items->Clear();
+
+		if (input == "") {
+			return;
+		}
+
+		for (auto studentItem : admin->gd->students) {
+
+			auto stud = studentItem.second;
+			if (stud.get_name().rfind(input, 0) == 0) {
+
+				auto fullNameStr = gcnew System::String(stud.get_name().c_str());
+
+				std::string coursesStr = "";
+				for (auto course : stud.get_finished_courses())
+					coursesStr += "  " + course.get_name();
+				std::string coursesStr2 = "";
+				for (auto course : stud.get_courses_in_progress())
+					coursesStr2 += "  " + course.get_name();
+
+				auto courses = gcnew System::String(coursesStr.c_str());
+				auto courses2 = gcnew System::String(coursesStr2.c_str());
+				auto arr = gcnew array<String^>(3);
+				arr[0] = fullNameStr;
+				arr[1] = courses;
+				arr[2] = courses2;
+				resultStudentSearch->Items->Add(gcnew ListViewItem(arr));
+			}
+		}
+
+
+	}
+	};
 }

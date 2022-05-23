@@ -20,6 +20,8 @@ namespace StudentSubjectsManagementSystem {
 	public:
 		Form^ back ;
 	private: System::Windows::Forms::PictureBox^ addcourse_back_B;
+	private: System::Windows::Forms::ListView^ resultStudentSearch;
+
 	public:
 		Student* student;
 		Student_ViewAvailableCourses(Form ^form , Student * obj )
@@ -27,6 +29,9 @@ namespace StudentSubjectsManagementSystem {
 			back = form;
 			student = obj;
 			InitializeComponent();
+			resultStudentSearch->View = View::Details;
+			resultStudentSearch->Columns->Add("Name", 180);
+			resultStudentSearch->Columns->Add("Code");
 			//
 			//TODO: Add the constructor code here
 			//
@@ -59,6 +64,7 @@ namespace StudentSubjectsManagementSystem {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Student_ViewAvailableCourses::typeid));
 			this->addcourse_back_B = (gcnew System::Windows::Forms::PictureBox());
+			this->resultStudentSearch = (gcnew System::Windows::Forms::ListView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->addcourse_back_B))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -75,18 +81,29 @@ namespace StudentSubjectsManagementSystem {
 			this->addcourse_back_B->TabStop = false;
 			this->addcourse_back_B->Click += gcnew System::EventHandler(this, &Student_ViewAvailableCourses::addcourse_back_B_Click);
 			// 
+			// resultStudentSearch
+			// 
+			this->resultStudentSearch->HideSelection = false;
+			this->resultStudentSearch->Location = System::Drawing::Point(36, 102);
+			this->resultStudentSearch->Name = L"resultStudentSearch";
+			this->resultStudentSearch->Size = System::Drawing::Size(365, 307);
+			this->resultStudentSearch->TabIndex = 50;
+			this->resultStudentSearch->UseCompatibleStateImageBehavior = false;
+			// 
 			// Student_ViewAvailableCourses
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(689, 375);
+			this->ClientSize = System::Drawing::Size(653, 473);
+			this->Controls->Add(this->resultStudentSearch);
 			this->Controls->Add(this->addcourse_back_B);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"Student_ViewAvailableCourses";
 			this->Text = L"Student_ViewAvailableCourses";
+			this->Load += gcnew System::EventHandler(this, &Student_ViewAvailableCourses::Student_ViewAvailableCourses_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->addcourse_back_B))->EndInit();
 			this->ResumeLayout(false);
 
@@ -106,5 +123,21 @@ namespace StudentSubjectsManagementSystem {
 			std::cout << it->second.get_name() << std::endl;
 		}
 	 */
-	};
+private: System::Void Student_ViewAvailableCourses_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	std::string nameStr = "";
+	for (auto course : student->gd->courses)
+		nameStr += "  " + course.second.get_name();
+	std::string codeStr = "";
+	for (auto course : student->gd->courses)
+		codeStr += "  " + std::to_string(course.second.get_code());
+
+	auto name = gcnew System::String(nameStr.c_str());
+	auto code = gcnew System::String(codeStr.c_str());
+	auto arr = gcnew array<String^>(2);
+	arr[0] = name;
+	arr[1] = code;
+	resultStudentSearch->Items->Add(gcnew ListViewItem(arr));
+}
+};
 }
