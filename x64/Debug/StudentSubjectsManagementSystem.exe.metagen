@@ -48,8 +48,8 @@ Class StudentSubjectsManagementSystem.Admin_AddCourse: AutoLayout, AnsiClass, Cl
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.Form, Admin*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
-    System.Windows.Forms.Form back : Public
     Admin* admin : Public
+    System.Windows.Forms.Form back : Public
 Class StudentSubjectsManagementSystem.Course_Modify: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.Form, Admin*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

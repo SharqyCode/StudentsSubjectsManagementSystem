@@ -81,7 +81,7 @@ namespace StudentSubjectsManagementSystem {
 			// 
 			this->modify_B->BackColor = System::Drawing::Color::Transparent;
 			this->modify_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"modify_B.Image")));
-			this->modify_B->Location = System::Drawing::Point(87, 146);
+			this->modify_B->Location = System::Drawing::Point(101, 176);
 			this->modify_B->Name = L"modify_B";
 			this->modify_B->Size = System::Drawing::Size(170, 140);
 			this->modify_B->TabIndex = 0;
@@ -93,9 +93,9 @@ namespace StudentSubjectsManagementSystem {
 			// 
 			this->courses_B->BackColor = System::Drawing::Color::Transparent;
 			this->courses_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"courses_B.Image")));
-			this->courses_B->Location = System::Drawing::Point(273, 146);
+			this->courses_B->Location = System::Drawing::Point(287, 176);
 			this->courses_B->Name = L"courses_B";
-			this->courses_B->Size = System::Drawing::Size(170, 140);
+			this->courses_B->Size = System::Drawing::Size(169, 140);
 			this->courses_B->TabIndex = 1;
 			this->courses_B->TabStop = false;
 			this->courses_B->Click += gcnew System::EventHandler(this, &studentData::courses_B_Click);
@@ -118,7 +118,7 @@ namespace StudentSubjectsManagementSystem {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(541, 380);
+			this->ClientSize = System::Drawing::Size(557, 419);
 			this->Controls->Add(this->studentData_back_B);
 			this->Controls->Add(this->courses_B);
 			this->Controls->Add(this->modify_B);

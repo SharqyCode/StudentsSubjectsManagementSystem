@@ -294,10 +294,16 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Void AdminLogin_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void UserName_In_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		
+		Login_B->Enabled = false;
+		if (UserName_In->Text->Length != 0) {
+			Login_B->Enabled = true;
+		}
 	}
 private: System::Void Password_In_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	
+	Login_B->Enabled = false;
+	if (Password_In->Text->Length != 0) {
+		Login_B->Enabled = true;
+	}
 }
 };
 }

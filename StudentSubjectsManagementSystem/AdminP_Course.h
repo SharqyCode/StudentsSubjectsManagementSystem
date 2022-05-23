@@ -27,6 +27,8 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Windows::Forms::PictureBox^ Add_B;
 	private: System::Windows::Forms::PictureBox^ Modify_B;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::ToolTip^ delete_toolTip;
+	private: System::Windows::Forms::ToolTip^ pre_toolTip;
 	private: System::Windows::Forms::PictureBox^ Students_B;
 	public:
 		AdminP_Course(void)
@@ -67,7 +69,7 @@ namespace StudentSubjectsManagementSystem {
 
 	private: System::Windows::Forms::ToolTip^ Add_tooltip;
 	private: System::Windows::Forms::ToolTip^ modify_toolTip;
-	private: System::Windows::Forms::ToolTip^ delete_toolTip;
+
 	private: System::Windows::Forms::ToolTip^ students_toolTip;
 
 private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
@@ -114,7 +116,6 @@ private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AdminP_Course::typeid));
 			this->Add_tooltip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->modify_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
-			this->delete_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->students_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->Back_B = (gcnew System::Windows::Forms::PictureBox());
@@ -122,6 +123,8 @@ private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 			this->Modify_B = (gcnew System::Windows::Forms::PictureBox());
 			this->Students_B = (gcnew System::Windows::Forms::PictureBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->delete_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->pre_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Back_B))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Add_B))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Modify_B))->BeginInit();
@@ -139,10 +142,10 @@ private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 			this->Back_B->BackColor = System::Drawing::Color::Transparent;
 			this->Back_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Back_B.Image")));
-			this->Back_B->Location = System::Drawing::Point(0, 12);
-			this->Back_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Back_B->Location = System::Drawing::Point(0, 10);
+			this->Back_B->Margin = System::Windows::Forms::Padding(2);
 			this->Back_B->Name = L"Back_B";
-			this->Back_B->Size = System::Drawing::Size(51, 57);
+			this->Back_B->Size = System::Drawing::Size(38, 46);
 			this->Back_B->TabIndex = 1;
 			this->Back_B->TabStop = false;
 			this->Back_B->Click += gcnew System::EventHandler(this, &AdminP_Course::Back_B_Click);
@@ -152,60 +155,71 @@ private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 			this->Add_B->BackColor = System::Drawing::Color::Transparent;
 			this->Add_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Add_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Add_B.Image")));
-			this->Add_B->Location = System::Drawing::Point(39, 184);
-			this->Add_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Add_B->Location = System::Drawing::Point(102, 128);
+			this->Add_B->Margin = System::Windows::Forms::Padding(2);
 			this->Add_B->Name = L"Add_B";
-			this->Add_B->Size = System::Drawing::Size(172, 142);
+			this->Add_B->Size = System::Drawing::Size(129, 115);
 			this->Add_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Add_B->TabIndex = 12;
 			this->Add_B->TabStop = false;
 			this->Add_B->Click += gcnew System::EventHandler(this, &AdminP_Course::Add_B_Click_1);
+			this->Add_B->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AdminP_Course::Add_B_MouseMove_1);
 			// 
 			// Modify_B
 			// 
 			this->Modify_B->BackColor = System::Drawing::Color::Transparent;
 			this->Modify_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Modify_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Modify_B.Image")));
-			this->Modify_B->Location = System::Drawing::Point(281, 184);
-			this->Modify_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Modify_B->Location = System::Drawing::Point(102, 265);
+			this->Modify_B->Margin = System::Windows::Forms::Padding(2);
 			this->Modify_B->Name = L"Modify_B";
-			this->Modify_B->Size = System::Drawing::Size(172, 142);
+			this->Modify_B->Size = System::Drawing::Size(129, 115);
 			this->Modify_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Modify_B->TabIndex = 14;
 			this->Modify_B->TabStop = false;
 			this->Modify_B->Click += gcnew System::EventHandler(this, &AdminP_Course::Modify_B_Click_2);
+			this->Modify_B->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AdminP_Course::Modify_B_MouseMove_1);
 			// 
 			// Students_B
 			// 
 			this->Students_B->BackColor = System::Drawing::Color::Transparent;
 			this->Students_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Students_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Students_B.Image")));
-			this->Students_B->Location = System::Drawing::Point(517, 184);
-			this->Students_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Students_B->Location = System::Drawing::Point(326, 265);
+			this->Students_B->Margin = System::Windows::Forms::Padding(2);
 			this->Students_B->Name = L"Students_B";
-			this->Students_B->Size = System::Drawing::Size(172, 142);
+			this->Students_B->Size = System::Drawing::Size(129, 115);
 			this->Students_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->Students_B->TabIndex = 15;
 			this->Students_B->TabStop = false;
 			this->Students_B->Click += gcnew System::EventHandler(this, &AdminP_Course::Students_B_Click_1);
+			this->Students_B->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AdminP_Course::Students_B_MouseMove_1);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(227, 357);
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)), static_cast<System::Int32>(static_cast<System::Byte>(194)),
+				static_cast<System::Int32>(static_cast<System::Byte>(194)));
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Location = System::Drawing::Point(326, 128);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(262, 100);
+			this->button1->Size = System::Drawing::Size(129, 115);
 			this->button1->TabIndex = 16;
-			this->button1->Text = L"Prerequisets";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &AdminP_Course::button1_Click);
+			this->button1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AdminP_Course::button1_MouseMove);
 			// 
 			// AdminP_Course
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(725, 469);
+			this->ClientSize = System::Drawing::Size(557, 419);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Students_B);
 			this->Controls->Add(this->Modify_B);
@@ -214,7 +228,7 @@ private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"AdminP_Course";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminP_Course";
@@ -294,6 +308,21 @@ private: System::Void Students_B_Click_1(System::Object^ sender, System::EventAr
 	this->Hide();
 	obj->ShowDialog();
 
+}
+private: System::Void Add_B_MouseMove_1(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+
+	Add_tooltip->SetToolTip(Add_B,"Add a Course.");
+}
+private: System::Void button1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	pre_toolTip->SetToolTip(button1,"Add Course Prerequisites");
+}
+private: System::Void Modify_B_MouseMove_1(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+
+	modify_toolTip->SetToolTip(Modify_B,"Modify a Course.");
+}
+private: System::Void Students_B_MouseMove_1(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+
+	students_toolTip->SetToolTip(Students_B,"List Students Registered in a Specific Course");
 }
 };
 }

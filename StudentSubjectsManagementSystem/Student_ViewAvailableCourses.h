@@ -74,34 +74,43 @@ namespace StudentSubjectsManagementSystem {
 			this->addcourse_back_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->addcourse_back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"addcourse_back_B.Image")));
 			this->addcourse_back_B->Location = System::Drawing::Point(-1, -1);
-			this->addcourse_back_B->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->addcourse_back_B->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->addcourse_back_B->Name = L"addcourse_back_B";
-			this->addcourse_back_B->Size = System::Drawing::Size(51, 57);
+			this->addcourse_back_B->Size = System::Drawing::Size(38, 46);
 			this->addcourse_back_B->TabIndex = 49;
 			this->addcourse_back_B->TabStop = false;
 			this->addcourse_back_B->Click += gcnew System::EventHandler(this, &Student_ViewAvailableCourses::addcourse_back_B_Click);
 			// 
 			// resultStudentSearch
 			// 
+			this->resultStudentSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)),
+				static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(194)));
+			this->resultStudentSearch->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->resultStudentSearch->GridLines = true;
 			this->resultStudentSearch->HideSelection = false;
-			this->resultStudentSearch->Location = System::Drawing::Point(36, 102);
+			this->resultStudentSearch->Location = System::Drawing::Point(40, 100);
+			this->resultStudentSearch->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->resultStudentSearch->Name = L"resultStudentSearch";
-			this->resultStudentSearch->Size = System::Drawing::Size(365, 307);
+			this->resultStudentSearch->Size = System::Drawing::Size(292, 244);
 			this->resultStudentSearch->TabIndex = 50;
 			this->resultStudentSearch->UseCompatibleStateImageBehavior = false;
+			this->resultStudentSearch->View = System::Windows::Forms::View::Details;
 			// 
 			// Student_ViewAvailableCourses
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(653, 473);
+			this->ClientSize = System::Drawing::Size(557, 419);
 			this->Controls->Add(this->resultStudentSearch);
 			this->Controls->Add(this->addcourse_back_B);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Student_ViewAvailableCourses";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Student_ViewAvailableCourses";
 			this->Load += gcnew System::EventHandler(this, &Student_ViewAvailableCourses::Student_ViewAvailableCourses_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->addcourse_back_B))->EndInit();

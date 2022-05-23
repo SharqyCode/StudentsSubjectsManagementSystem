@@ -23,6 +23,7 @@ namespace StudentSubjectsManagementSystem {
 	public:
 		Form^ search;
 	private: System::Windows::Forms::ListView^ resultStudentSearch;
+	private: System::Windows::Forms::ToolTip^ search_toolTip;
 	public:
 		Admin* admin;
 		Admin_studentSearch(void)
@@ -64,12 +65,13 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Windows::Forms::TextBox^ search_textBox;
 	protected:
 	private: System::Windows::Forms::PictureBox^ search_back_B;
+	private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -78,59 +80,64 @@ namespace StudentSubjectsManagementSystem {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Admin_studentSearch::typeid));
 			this->search_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->search_back_B = (gcnew System::Windows::Forms::PictureBox());
 			this->resultStudentSearch = (gcnew System::Windows::Forms::ListView());
+			this->search_toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->search_back_B))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// search_textBox
 			// 
 			this->search_textBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->search_textBox->Location = System::Drawing::Point(365, 160);
-			this->search_textBox->Margin = System::Windows::Forms::Padding(4);
+			this->search_textBox->Location = System::Drawing::Point(363, 144);
 			this->search_textBox->Name = L"search_textBox";
-			this->search_textBox->Size = System::Drawing::Size(159, 17);
+			this->search_textBox->Size = System::Drawing::Size(136, 13);
 			this->search_textBox->TabIndex = 0;
 			this->search_textBox->TextChanged += gcnew System::EventHandler(this, &Admin_studentSearch::search_textBox_TextChanged);
 			this->search_textBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Admin_studentSearch::search_textBox_KeyDown);
+			this->search_textBox->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &Admin_studentSearch::search_textBox_MouseMove);
 			// 
 			// search_back_B
 			// 
 			this->search_back_B->BackColor = System::Drawing::Color::Transparent;
 			this->search_back_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"search_back_B.Image")));
 			this->search_back_B->Location = System::Drawing::Point(0, -1);
-			this->search_back_B->Margin = System::Windows::Forms::Padding(4);
 			this->search_back_B->Name = L"search_back_B";
-			this->search_back_B->Size = System::Drawing::Size(55, 62);
+			this->search_back_B->Size = System::Drawing::Size(47, 50);
 			this->search_back_B->TabIndex = 1;
 			this->search_back_B->TabStop = false;
 			this->search_back_B->Click += gcnew System::EventHandler(this, &Admin_studentSearch::search_back_B_Click);
 			// 
 			// resultStudentSearch
 			// 
+			this->resultStudentSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(196)),
+				static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(194)));
+			this->resultStudentSearch->GridLines = true;
 			this->resultStudentSearch->HideSelection = false;
-			this->resultStudentSearch->Location = System::Drawing::Point(26, 89);
+			this->resultStudentSearch->Location = System::Drawing::Point(36, 88);
+			this->resultStudentSearch->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->resultStudentSearch->Name = L"resultStudentSearch";
-			this->resultStudentSearch->Size = System::Drawing::Size(320, 307);
+			this->resultStudentSearch->Size = System::Drawing::Size(275, 250);
 			this->resultStudentSearch->TabIndex = 2;
 			this->resultStudentSearch->UseCompatibleStateImageBehavior = false;
+			this->resultStudentSearch->View = System::Windows::Forms::View::Details;
 			// 
 			// Admin_studentSearch
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(571, 473);
+			this->ClientSize = System::Drawing::Size(557, 419);
 			this->Controls->Add(this->resultStudentSearch);
 			this->Controls->Add(this->search_back_B);
 			this->Controls->Add(this->search_textBox);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Admin_studentSearch";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Admin_studentSearch";
@@ -203,5 +210,8 @@ namespace StudentSubjectsManagementSystem {
 
 
 	}
-	};
+	private: System::Void search_textBox_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		search_toolTip->SetToolTip(search_textBox,"Enter Student Name to view Registered Courses.");
+	}
+};
 }

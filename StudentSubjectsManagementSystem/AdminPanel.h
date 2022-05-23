@@ -82,7 +82,7 @@ namespace StudentSubjectsManagementSystem {
 			this->Student_P->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Student_P->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Student_P.Image")));
 			this->Student_P->Location = System::Drawing::Point(40, 158);
-			this->Student_P->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Student_P->Margin = System::Windows::Forms::Padding(2);
 			this->Student_P->Name = L"Student_P";
 			this->Student_P->Size = System::Drawing::Size(129, 115);
 			this->Student_P->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -98,7 +98,7 @@ namespace StudentSubjectsManagementSystem {
 			this->Exit_B->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Exit_B->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Exit_B.Image")));
 			this->Exit_B->Location = System::Drawing::Point(371, 158);
-			this->Exit_B->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Exit_B->Margin = System::Windows::Forms::Padding(2);
 			this->Exit_B->Name = L"Exit_B";
 			this->Exit_B->Size = System::Drawing::Size(129, 115);
 			this->Exit_B->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -113,7 +113,7 @@ namespace StudentSubjectsManagementSystem {
 			this->Courses_P->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Courses_P->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Courses_P.Image")));
 			this->Courses_P->Location = System::Drawing::Point(204, 158);
-			this->Courses_P->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Courses_P->Margin = System::Windows::Forms::Padding(2);
 			this->Courses_P->Name = L"Courses_P";
 			this->Courses_P->Size = System::Drawing::Size(129, 115);
 			this->Courses_P->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -134,7 +134,8 @@ namespace StudentSubjectsManagementSystem {
 			this->Controls->Add(this->Student_P);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"AdminPanel";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminPanel";
