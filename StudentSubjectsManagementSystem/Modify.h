@@ -430,6 +430,11 @@ private: System::Void OK_AS_B_Click(System::Object^ sender, System::EventArgs^ e
 	std::string name = context.marshal_as<std::string>(Student_Name->Text);
 	std::string year = context.marshal_as<std::string>(Year_textBox->Text);
 	std::string pass = context.marshal_as<std::string>(Password_textBox->Text);
+
+	if (name == "" || year == "" || pass == "" ) {
+		MessageBox::Show("Complete the student's data!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
+	}
 	Student stud;
 	stud.set_academic_year(year);
 	stud.set_name(name);

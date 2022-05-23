@@ -422,6 +422,15 @@ namespace StudentSubjectsManagementSystem {
 		std::string course3_str = context.marshal_as<std::string>(course3->Text);
 		int code1, code2, code3 , actual;
 		actual = code1 = code2 = code3 = -1;
+		if (actual_str == "") {
+			MessageBox::Show("State the course's code!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		if (actual_str == "" && course1_str == "" && course2_str == "" && course3_str == "") {
+
+			MessageBox::Show("No changes Done", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
 		if (actual_str != "") {
 			actual = std::stoi(actual_str);
 		}

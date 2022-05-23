@@ -690,6 +690,10 @@ namespace StudentSubjectsManagementSystem {
 		std::string id = context.marshal_as<std::string>(ID_textBox->Text);
 		std::string password = context.marshal_as<std::string>(Password_textBox->Text);
 		std::string year = context.marshal_as<std::string>(Year_textBox->Text);
+		if (name == "" || id == "" || password == "" || year == "") {
+			MessageBox::Show("Complete student's data!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
 			Student stud;
 			stud.set_name(name);
 			stud.set_password(password);

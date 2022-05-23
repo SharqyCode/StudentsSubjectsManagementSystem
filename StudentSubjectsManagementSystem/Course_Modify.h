@@ -425,6 +425,10 @@ namespace StudentSubjectsManagementSystem {
 		std::string name = context.marshal_as<std::string>(Name_M_textBox->Text);
 		std::string no_stud_str = context.marshal_as<std::string>(Quota_M_textBox->Text);
 		std::string hours_str = context.marshal_as<std::string>(Hours_M_textBox->Text);
+		if (name == "" || no_stud_str == "" || hours_str == "") {
+			MessageBox::Show("Complete the course's data!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
 		int max = std::stoi(no_stud_str);
 		int hours = std::stoi(hours_str);
 		Course course;

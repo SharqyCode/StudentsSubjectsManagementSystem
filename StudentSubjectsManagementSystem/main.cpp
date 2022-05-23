@@ -8,7 +8,6 @@ using namespace StudentSubjectsManagementSystem;
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
     DatabaseHandler dbh;
-    
     // create db
     dbh.create_db();
     // create tables

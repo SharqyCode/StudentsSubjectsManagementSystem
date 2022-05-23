@@ -140,7 +140,11 @@ namespace StudentSubjectsManagementSystem {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		msclr::interop::marshal_context context;
 		std::string code_str = context.marshal_as<std::string>(course_code_textBox->Text);
-		int code = std::stoi(code_str);
+		int code = -1;
+		if(code_str  != "")
+		code = std::stoi(code_str);
+		if (code == -1)
+			return;
 	    student->enroll_course(student->gd->courses[code]);
 		this->Hide();
 		back->Show();

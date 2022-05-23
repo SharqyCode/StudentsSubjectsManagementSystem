@@ -160,13 +160,14 @@ private: System::Void Admin_courseSearch_Load(System::Object^ sender, System::Ev
 private: System::Void course_id_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	msclr::interop::marshal_context context;
 	std::string input =context.marshal_as<std::string>(course_id->Text);
+
+	if (input == "") {
+		return;
+	}
 	resultStudentSearch->Items->Clear();
 	int code = std::stoi(input);
 	//resultStudentSearch->Items->Clear();
 
-	if (input == " ") {
-		return;
-	}
 
 	/*for (auto courseItem : admin->gd->courses) {
 
